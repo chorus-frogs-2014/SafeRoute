@@ -38,11 +38,8 @@ $(document).ready(function() {
 
     event.preventDefault();
     $.ajax({
-      beforeSend: function(xhrObj){
-                xhrObj.setRequestHeader("Content-Type","application/json");
-                xhrObj.setRequestHeader("Accept","application/json");
-        },
-      url: '/'
+      url: 'http://sanfrancisco.crimespotting.org/crime-data?format=json&dstart=2009-01-01&count=1000',
+      type: 'GET',
       dataType: 'json'
     }).done(function(response){
       console.log(response)
