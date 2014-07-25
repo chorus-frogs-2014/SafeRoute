@@ -2,8 +2,9 @@ $(document).ready(function() {
   var directionsDisplay;
   var directionsService = new google.maps.DirectionsService();
   var map;
+  initialize();
 
-  function initialize() {
+function initialize() {
     directionsDisplay = new google.maps.DirectionsRenderer();
     var SanFransisco = new google.maps.LatLng(37.7833, -122.4167);
     var mapOptions = {
@@ -14,6 +15,10 @@ $(document).ready(function() {
     directionsDisplay.setMap(map);
     directionsDisplay.setPanel(document.getElementById("directionsPanel"));
   }
+
+
+
+
 
   function calcRoute(start, end) {
     var start = start;
@@ -26,14 +31,13 @@ $(document).ready(function() {
     };
     directionsService.route(request, function(result, status) {
       if (status == google.maps.DirectionsStatus.OK) {
-        console.log(result)
-        console.log(result.routes)
+
         directionsDisplay.setDirections(result)
       }
     });
   }
 
-  initialize();
+
 
   $('#locations').on('submit', function(event){
     event.preventDefault();
