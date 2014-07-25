@@ -1,4 +1,4 @@
-// $(document).ready(function(){
-//   SafeRoute.MapsController.initialize(SafeRoute.MapsModel, SafeRoute.MapsView);
-// });
+$(document).ready(function(){
+  SafeRoute.MapsController.initialize(SafeRoute.MapsModel, SafeRoute.MapsView);
+});
 
