@@ -6,15 +6,17 @@
 // initialize();
 
 // function initialize() {
-    // directionsDisplay = new google.maps.DirectionsRenderer();
-    // var sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
-    // var mapOptions = {
-    //   zoom:13,
-    //   center: sanFranGoogleObj
-    // }
-    // map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-    // directionsDisplay.setMap(map);
-    // directionsDisplay.setPanel(document.getElementById("directionsPanel"));
+  //   directionsDisplay = new google.maps.DirectionsRenderer();
+  //   var sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
+  //   var mapOptions = {
+  //     zoom:13,
+  //     center: sanFranGoogleObj
+  //   }
+  //   map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+  //   directionsDisplay.setMap(map);
+
+  //   directionsDisplay.setPanel(document.getElementById("directionsPanel"));
   // }
 
 

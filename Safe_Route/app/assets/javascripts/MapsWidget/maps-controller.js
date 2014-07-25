@@ -5,7 +5,7 @@ SafeRoute.MapsController = {
     var sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
     this.model = model
     this.view = view;
-    this.view.collect(sanFranGoogleObj);
+    this.view.render(directionsDisplay, sanFranGoogleObj);
   }
 }
 

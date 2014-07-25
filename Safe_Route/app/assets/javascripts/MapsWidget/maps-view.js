@@ -7,8 +7,11 @@ setMapOptions: function(sanFranGoogleObj){
     }
       return mapOptions
   },
-collect: function(mapOptions){
-    var map = new google.maps.Map(document.getElementById("map-canvas"), this.setMapOptions());
+collect: function(sanFranGoogleObj){
+    var map = new google.maps.Map(document.getElementById("map-canvas"), this.setMapOptions(sanFranGoogleObj));
     return map
+  },
+render: function(directionsDisplay, sanFranGoogleObj){
+  directionsDisplay.setMap(this.collect(sanFranGoogleObj));
   }
 }
