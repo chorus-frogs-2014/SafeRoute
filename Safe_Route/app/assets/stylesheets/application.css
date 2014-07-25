@@ -11,3 +11,10 @@
  *= require_self
  *= require_tree .
  */
+
+html {height: 100%}
+body {height: 100%}
+
+#map-canvas {
+  height: 100%;
+}

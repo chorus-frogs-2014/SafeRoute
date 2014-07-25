@@ -5,10 +5,10 @@ $(document).ready(function() {
 
   function initialize() {
     directionsDisplay = new google.maps.DirectionsRenderer();
-    var chicago = new google.maps.LatLng(41.850033, -87.6500523);
+    var SanFransisco = new google.maps.LatLng(37.7833, -122.4167);
     var mapOptions = {
-      zoom:7,
-      center: chicago
+      zoom:11,
+      center: SanFransisco
     }
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     directionsDisplay.setMap(map);
@@ -38,6 +38,7 @@ $(document).ready(function() {
     var end =$(event.target).serializeArray()[1].value
     calcRoute(start, end);
   })
+
 })
 
 // <script type="text/javascript"
