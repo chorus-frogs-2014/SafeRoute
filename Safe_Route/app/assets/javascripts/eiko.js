@@ -12,6 +12,7 @@ $(document).ready(function() {
     }
     map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
     directionsDisplay.setMap(map);
+    directionsDisplay.setPanel(document.getElementById("directionsPanel"));
   }
 
   function calcRoute(start, end) {
@@ -20,12 +21,14 @@ $(document).ready(function() {
     var request = {
       origin:start,
       destination:end,
-      travelMode: google.maps.TravelMode.DRIVING
+      travelMode: google.maps.TravelMode.WALKING,
+      provideRouteAlternatives: true
     };
     directionsService.route(request, function(result, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         console.log(result)
-        directionsDisplay.setDirections(result);
+        console.log(result.routes)
+        directionsDisplay.setDirections(result)
       }
     });
   }
