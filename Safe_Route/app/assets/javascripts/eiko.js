@@ -30,28 +30,23 @@ $(document).ready(function() {
     });
   }
 
-  initialize();
 
   $('#locations').on('submit', function(event){
+
     event.preventDefault();
+    $.ajax({
+      url: 'http://www.bjs.gov:8080/bjs/ncvs/v2/personal/2010?format=json',
+      type: 'GET',
+      dataType: 'json'
+    }).done(function(response){
+      console.log(response)
+    })
     var start = $(event.target).serializeArray()[0].value
-    var end =$(event.target).serializeArray()[1].value
+    var end = $(event.target).serializeArray()[1].value
     calcRoute(start, end);
+    
   })
 
 })
+  initialize();
 
-// <script type="text/javascript"
-//       src="https://maps.googleapis.com/maps/api/js?key=API_KEY">
-// </script>
-
-
-// var directionsRequest = new google.maps.DirectionsRequest({
-//   origin: "@123213",
-//   destination: LatLng | String,
-//   travelMode: TravelMode,
-// })
-
-// var directionsService = new google.maps.DirectionsService
-
-// directionsService.route(directionsRequest)
