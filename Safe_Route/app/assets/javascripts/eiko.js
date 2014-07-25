@@ -34,7 +34,7 @@ function initialize() {
 
   function crimeDataGrabber(){
       $.ajax({
-      url: 'http://sanfrancisco.crimespotting.org/crime-data?format=json&dstart=2009-01-01&count=1000',
+      url: 'http://sanfrancisco.crimespotting.org/crime-data?format=json&dstart=2012-01-01&count=2500&type=AA,Mu,Ro,SA,Al,DP,',
       type: 'GET',
       dataType: 'jsonp',
       success:function(data){
