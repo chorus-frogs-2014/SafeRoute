@@ -43,18 +43,3 @@ $(document).ready(function() {
   })
 
 })
-
-// <script type="text/javascript"
-//       src="https://maps.googleapis.com/maps/api/js?key=API_KEY">
-// </script>
-
-
-// var directionsRequest = new google.maps.DirectionsRequest({
-//   origin: "@123213",
-//   destination: LatLng | String,
-//   travelMode: TravelMode,
-// })
-
-// var directionsService = new google.maps.DirectionsService
-
-// directionsService.route(directionsRequest)
