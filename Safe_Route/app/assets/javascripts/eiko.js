@@ -15,7 +15,6 @@ function initialize() {
     directionsDisplay.setPanel(document.getElementById("directionsPanel"));
   }
 
-
   function calcRoute(start, end) {
     var start = start;
     var end = end;
