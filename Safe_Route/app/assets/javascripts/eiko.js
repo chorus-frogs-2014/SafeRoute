@@ -38,8 +38,11 @@ $(document).ready(function() {
 
     event.preventDefault();
     $.ajax({
-      url: 'http://www.bjs.gov:8080/bjs/ncvs/v2/personal/2010?format=json',
-      type: 'GET',
+      beforeSend: function(xhrObj){
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                xhrObj.setRequestHeader("Accept","application/json");
+        },
+      url: '/'
       dataType: 'json'
     }).done(function(response){
       console.log(response)
@@ -49,7 +52,7 @@ $(document).ready(function() {
     calcRoute(start, end);
     
   })
+  initialize();
 
 })
-  initialize();
 
