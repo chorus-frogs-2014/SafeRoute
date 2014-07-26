@@ -1,8 +1,9 @@
 SafeRoute.RoutesModel = {
-	initialize: function(directionsService, directionsDisplay){
-		this.directionsService = directionsService;
-		this.directionsDisplay = directionsDisplay;
-	},
+  initialize: function(directionsService, directionsDisplay){
+    this.directionsService = directionsService;
+    this.directionsDisplay = directionsDisplay;
+  },
+
   renderRoutes: function(result, start, end, data) {
     var start = start;
     var end = end;
@@ -14,8 +15,9 @@ SafeRoute.RoutesModel = {
     }
     this.newFunction(data, start, end, request, this.directionsService, this.directionsDisplay)
   },
+
     newFunction: function(data, start, end, request, directionsService, directionsDisplay){
-    	directionsService.route(request, function(result, status) {
+      directionsService.route(request, function(result, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(result)
 
@@ -95,4 +97,4 @@ SafeRoute.RoutesModel = {
       }
     });
   }
-}
+} 
