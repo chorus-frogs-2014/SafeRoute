@@ -15,3 +15,14 @@ SafeRoute.MapsModel = {
   }
 }
 
+// if (status == google.maps.DirectionsStatus.OK) {
+//             for (var i = 0, len = response.routes.length; i < len; i++) {
+//                 new google.maps.DirectionsRenderer({
+//                     map: mapObject,
+//                     directions: response,
+//                     routeIndex: i
+//                 });
+//             }
+//         } else {
+//             $("#error").append("Unable to retrieve your route<br />");
+//         }

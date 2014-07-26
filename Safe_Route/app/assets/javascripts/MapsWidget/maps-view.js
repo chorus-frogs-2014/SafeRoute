@@ -26,9 +26,9 @@ createMap: function(sanFranGoogleObj){
   },
 renderMap: function(directionsDisplay, sanFranGoogleObj){
   directionsDisplay.setMap(this.createMap(sanFranGoogleObj));
-  },
-
+},
 renderRoutes: function (result, directionsDisplay){
+  console.log(result)
   directionsDisplay.setDirections(result);
   directionsDisplay.setPanel(document.getElementById("directionsPanel"));
   }

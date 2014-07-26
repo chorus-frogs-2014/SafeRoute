@@ -1,19 +1,25 @@
 var SafeRoute = SafeRoute || {}
 
 SafeRoute.MapsController = {
-    initialize: function(model, view, directionsService, directionsDisplay){
+  initialize: function(model, view, directionsService, directionsDisplay){
     var sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
     this.model = model;
     this.view = view;
     this.view.renderMap(directionsDisplay, sanFranGoogleObj);
     this.view.bindListeners(this, directionsDisplay, directionsService);
   },
-    fetchCoords: function(start, end, directionsDisplay, directionsService){
-      this.model.request(this, start, end, directionsDisplay, directionsService)
+  fetchCoords: function(start, end, directionsDisplay, directionsService){
+    this.model.request(this, start, end, directionsDisplay, directionsService)
   },
-    collectCoords: function(result, directionsDisplay){
-      this.view.renderRoutes(result, directionsDisplay);
-    }
+  collectCoords: function(result, directionsDisplay){
+    this.view.renderRoutes(result, directionsDisplay);
+  }
 }
 
-
+// for (var i = 0, len = response.routes.length; i < len; i++) {
+//                 new google.maps.DirectionsRenderer({
+//                     map: mapObject,
+//                     directions: response,
+//                     routeIndex: i
+//                 });
+//   }
