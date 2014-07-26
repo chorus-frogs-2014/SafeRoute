@@ -97,4 +97,4 @@ SafeRoute.RoutesModel = {
       }
     });
   }
-}	
+}
