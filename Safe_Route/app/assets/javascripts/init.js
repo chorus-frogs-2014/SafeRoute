@@ -7,7 +7,7 @@ $(document).ready(function(){
   SafeRoute.MapsView.initialize(directionsDisplay);
   
   
-  // SafeRoute.CrimesController.initialize(SafeRoute.CrimesModel, directionsService, directionsDisplay);
+  SafeRoute.CrimesController.initialize(SafeRoute.CrimesModel);
   
   // SafeRoute.RoutesController.initialize(SafeRoute.RoutesModel, SafeRoute.RoutesView, directionsService, directionsDisplay);
 });

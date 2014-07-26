@@ -53,11 +53,11 @@ SafeRoute.RoutesModel = {
 					}
 				}
 				result.routes = [result.routes[minPath]]
-				// console.log(result)
-    //     console.log(minPath)
-    //     console.log(minScore)
+				console.log(result)
+        console.log(minPath)
+        console.log(minScore)
         console.log(routes)
-        // console.log(crimesSpots)
+        console.log(crimesSpots)
         console.log(data)
 
 				SafeRoute.RoutesController.render(result, directionsService);

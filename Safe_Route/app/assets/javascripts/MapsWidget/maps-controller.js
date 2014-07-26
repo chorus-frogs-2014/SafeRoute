@@ -12,8 +12,7 @@ SafeRoute.MapsController = {
       this.model.request(this, start, end)
   },
     gatherCrimeData: function(result, start, end){
-      console.log(result)
-      // SafeRoute.CrimesController.crimeApiCall(start, end)
+      SafeRoute.CrimesController.crimeApiCall(result, start, end)
     }
 }
 
