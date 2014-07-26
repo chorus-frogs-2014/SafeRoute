@@ -1,5 +1,10 @@
 SafeRoute.RoutesModel = {
-	renderRoutes: function(data, start, end, directionsService, directionsDisplay) {
+	initialize: function(directionsService, directionsDisplay){
+		this.directionsService = directionsService;
+		this.directionsDisplay = directionsDisplay;
+	},
+
+	renderRoutes: function(data, start, end) {
 		var start = start;
 		var end = end;
 		var request = {

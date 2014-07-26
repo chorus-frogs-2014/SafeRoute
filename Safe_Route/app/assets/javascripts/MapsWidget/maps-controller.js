@@ -6,13 +6,14 @@ SafeRoute.MapsController = {
     this.model = model;
     this.view = view;
     this.view.renderMap(directionsDisplay, sanFranGoogleObj);
-    this.view.bindListeners(this, directionsService, directionsDisplay);
+    this.view.bindListeners(this);
   },
-    fetchCoords: function(start, end, directionsService, directionsDisplay){
-      this.model.request(this, start, end, directionsService, directionsDisplay)
+    fetchCoords: function(start, end){
+      this.model.request(this, start, end)
   },
-    gatherCrimeData: function(result, start, end, directionsService, directionsDisplay){
-      SafeRoute.CrimesController.crimeApiCall(start, end, directionsService, directionsDisplay)
+    gatherCrimeData: function(result, start, end){
+      console.log(result)
+      // SafeRoute.CrimesController.crimeApiCall(start, end)
     }
 }
 
