@@ -15,7 +15,6 @@ SafeRoute.MapsController = {
       var mapsData = [];
       mapsData.push(result, start, end);
       return mapsData;
-      // SafeRoute.CrimesController.request(result, start, end)
   }
 }
 
