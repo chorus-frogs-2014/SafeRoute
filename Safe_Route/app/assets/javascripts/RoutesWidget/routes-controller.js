@@ -1,10 +1,8 @@
 var SafeRoute = SafeRoute || {}
 SafeRoute.RoutesController = {
-	initialize: function(model, view, MapsController, CrimesController){
+	initialize: function(model, view){
 		this.model = model;
 		this.view = view;
-		this.MapsController = MapsController;
-		this.CrimesController = CrimesController;
 	},
 	analyzeCrimeAndRouteData: function(result, start, end, data){
 		this.model.renderRoutes(result, start, end, data)
