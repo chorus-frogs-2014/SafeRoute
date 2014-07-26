@@ -93,8 +93,9 @@ SafeRoute.RoutesModel = {
 
 
         directionsDisplay.setDirections(result)
+        directionsDisplay.setPanel(document.getElementById('directionsPanel'));
         // debugger
       }
     });
   }
-}	
+}
