@@ -12,6 +12,7 @@ SafeRoute.RoutesModel = {
 			if (status == google.maps.DirectionsStatus.OK) {
 				directionsDisplay.setDirections(result)
 				var routes = []
+				console
 				for (var i = 0; i <result.routes.length; i++) {
 					var route = []
 					for (var j = 0; j <result.routes[i].overview_path.length; j++) {
@@ -35,6 +36,7 @@ SafeRoute.RoutesModel = {
 						}
 					}
 					var scaledCrime = absoluteCrimeScore/routes[path].length
+					console.log(scaledCrime)
 					if (minScore == 0) {
 						minScore = scaledCrime
 					}
@@ -46,7 +48,14 @@ SafeRoute.RoutesModel = {
 					}
 				}
 				result.routes = [result.routes[minPath]]
-				directionsDisplay.setDirections(result)
+				// console.log(result)
+    //     console.log(minPath)
+    //     console.log(minScore)
+        console.log(routes)
+        // console.log(crimesSpots)
+        console.log(data)
+
+				SafeRoute.RoutesController.render(result, directionsService);
 			}
 		});
 }

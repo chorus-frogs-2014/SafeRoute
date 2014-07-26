@@ -6,5 +6,8 @@ SafeRoute.RoutesController = {
 	},
 	analyzeCrimeAndRouteData: function(data, start, end, directionsService, directionsDisplay){
 		this.model.renderRoutes(data, start, end, directionsService, directionsDisplay)
+	},
+	render: function(result, directionsDisplay){
+		this.view.populateMap(result, directionsDisplay)
 	}
 }
