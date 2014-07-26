@@ -12,7 +12,7 @@ createCoords: function(controller){
   event.preventDefault();
   var start = $(event.target).serializeArray()[0].value
   var end = $(event.target).serializeArray()[1].value
-  controller.fetchCoords(start, end);
+  controller.request(start, end);
 },
 setMapOptions: function(sanFranGoogleObj){
     var mapOptions = {
@@ -25,7 +25,12 @@ createMap: function(sanFranGoogleObj){
     var map = new google.maps.Map(document.getElementById("map-canvas"), this.setMapOptions(sanFranGoogleObj));
     return map
   },
-renderMap: function(directionsDisplay, sanFranGoogleObj){
+render: function(directionsDisplay, sanFranGoogleObj){
   directionsDisplay.setMap(this.createMap(sanFranGoogleObj));
+},
+renderRoutes: function (result, directionsDisplay){
+  console.log(result)
+  directionsDisplay.setDirections(result);
+  directionsDisplay.setPanel(document.getElementById("directionsPanel"));
   }
 }
