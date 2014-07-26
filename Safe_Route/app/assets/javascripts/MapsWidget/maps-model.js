@@ -1,5 +1,5 @@
 SafeRoute.MapsModel = {
-  request: function(controller, start, end, directionsDisplay, directionsService){
+  request: function(controller, start, end, directionsService, directionsDisplay){
     var request = {
       origin:start,
       destination:end,
@@ -8,7 +8,7 @@ SafeRoute.MapsModel = {
     };
     directionsService.route(request, function(result, status) {
       if (status == google.maps.DirectionsStatus.OK) {
-        controller.collectCoords(result, directionsDisplay)
+        controller.gatherCrimeData(result, start, end, directionsService, directionsDisplay)
       }
     });
 

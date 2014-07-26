@@ -1,16 +1,16 @@
 SafeRoute.MapsView = {
 
-bindListeners: function(controller, directionsDisplay, directionsService){
+bindListeners: function(controller, directionsService, directionsDisplay){
   var self = this
   $('#locations').on('submit', function(){
-    self.createCoords(controller, directionsDisplay, directionsService);
+    self.createCoords(controller, directionsService, directionsDisplay);
   })
 },
-createCoords: function(controller, directionsDisplay, directionsService){
+createCoords: function(controller, directionsService, directionsDisplay){
   event.preventDefault();
   var start = $(event.target).serializeArray()[0].value
   var end = $(event.target).serializeArray()[1].value
-  controller.fetchCoords(start, end, directionsDisplay, directionsService);
+  controller.fetchCoords(start, end, directionsService, directionsDisplay);
 },
 setMapOptions: function(sanFranGoogleObj){
     var mapOptions = {
@@ -28,8 +28,5 @@ renderMap: function(directionsDisplay, sanFranGoogleObj){
   directionsDisplay.setMap(this.createMap(sanFranGoogleObj));
   },
 
-renderRoutes: function (result, directionsDisplay){
-  directionsDisplay.setDirections(result);
-  directionsDisplay.setPanel(document.getElementById("directionsPanel"));
-  }
+
 }
