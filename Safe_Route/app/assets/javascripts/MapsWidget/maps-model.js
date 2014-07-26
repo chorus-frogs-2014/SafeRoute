@@ -1,17 +1,19 @@
 SafeRoute.MapsModel = {
-  request: function(controller, start, end, directionsDisplay, directionsService){
+  initialize: function(directionsService) {
+    this.directionsService = directionsService;
+  },
+  requestRoutes: function(controller, start, end){
     var request = {
       origin:start,
       destination:end,
       travelMode: google.maps.TravelMode.WALKING,
       provideRouteAlternatives: true
     };
-    directionsService.route(request, function(result, status) {
+    this.directionsService.route(request, function(result, status) {
       if (status == google.maps.DirectionsStatus.OK) {
-        controller.collectCoords(result, directionsDisplay)
+        controller.collect(result, start, end)
       }
     });
-
   }
 }
 

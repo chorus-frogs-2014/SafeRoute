@@ -5,21 +5,15 @@ SafeRoute.MapsController = {
     var sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
     this.model = model;
     this.view = view;
-    this.view.renderMap(directionsDisplay, sanFranGoogleObj);
-    this.view.bindListeners(this, directionsDisplay, directionsService);
+    this.view.render(directionsDisplay, sanFranGoogleObj);
+    this.view.bindListeners(this);
   },
-  fetchCoords: function(start, end, directionsDisplay, directionsService){
-    this.model.request(this, start, end, directionsDisplay, directionsService)
+
+  request: function(start, end){
+      this.model.requestRoutes(this, start, end)
   },
-  collectCoords: function(result, directionsDisplay){
-    this.view.renderRoutes(result, directionsDisplay);
+  collect: function(result, start, end){
+      SafeRoute.CrimesController.request(result, start, end)
   }
 }
 
-// for (var i = 0, len = response.routes.length; i < len; i++) {
-//                 new google.maps.DirectionsRenderer({
-//                     map: mapObject,
-//                     directions: response,
-//                     routeIndex: i
-//                 });
-//   }
