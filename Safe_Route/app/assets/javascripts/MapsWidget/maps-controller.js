@@ -12,7 +12,9 @@ SafeRoute.MapsController = {
       this.model.requestRoutes(this, start, end)
   },
     collect: function(result, start, end){
-      SafeRoute.CrimesController.request(result, start, end)
+      var mapsData = [];
+      mapsData.push(result, start, end);
+      return mapsData;
   }
 }
 
