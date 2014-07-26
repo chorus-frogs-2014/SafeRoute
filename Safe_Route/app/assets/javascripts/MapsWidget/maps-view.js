@@ -1,8 +1,7 @@
 SafeRoute.MapsView = {
 initialize: function(directionsDisplay) {
     this.directionsDisplay = directionsDisplay
-  },
-
+},
 bindListeners: function(controller){
   var self = this
   $('#locations').on('submit', function(){

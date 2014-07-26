@@ -14,7 +14,6 @@ SafeRoute.MapsModel = {
         controller.gatherCrimeData(result, start, end)
       }
     });
-
   }
 }
 

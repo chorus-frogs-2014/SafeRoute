@@ -13,6 +13,6 @@ SafeRoute.MapsController = {
   },
     gatherCrimeData: function(result, start, end){
       SafeRoute.CrimesController.crimeApiCall(result, start, end)
-    }
+  }
 }
 
