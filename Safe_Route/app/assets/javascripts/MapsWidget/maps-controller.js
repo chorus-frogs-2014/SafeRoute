@@ -12,7 +12,7 @@ SafeRoute.MapsController = {
       this.model.requestRoutes(this, start, end)
   },
     collect: function(result, start, end){
-      SafeRoute.CrimesController.crimeApiCall(result, start, end)
+      SafeRoute.CrimesController.request(result, start, end)
   }
 }
 
