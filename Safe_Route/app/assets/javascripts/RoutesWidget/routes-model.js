@@ -4,7 +4,7 @@ SafeRoute.RoutesModel = {
 		this.directionsDisplay = directionsDisplay;
 	},
 
-  renderRoutes: function(data, result, start, end) {
+  renderRoutes: function(result, start, end, data) {
     var start = start;
     var end = end;
     var request = {

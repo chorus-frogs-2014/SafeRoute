@@ -8,7 +8,6 @@ SafeRoute.CrimesController = {
 
 	},
 	sendToRoutes: function(result, start, end, data){
-		console.log(data)
-		// SafeRoute.RoutesController.analyzeCrimeAndRouteData(data, result, start, end);
+		SafeRoute.RoutesController.analyzeCrimeAndRouteData(result, start, end, data);
 	}
 }
