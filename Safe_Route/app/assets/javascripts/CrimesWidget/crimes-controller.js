@@ -9,4 +9,5 @@ SafeRoute.CrimesController = {
 	pass: function(result, start, end, data){
 		SafeRoute.RoutesController.analyzeCrimeAndRouteData(result, start, end, data);
 	}
+
 }
