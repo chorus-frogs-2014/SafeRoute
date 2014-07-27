@@ -1,11 +1,11 @@
 $(document).ready(function(){
   var directionsService = new google.maps.DirectionsService();
-  var directionsDisplay = new google.maps.DirectionsRenderer();
+  var directionsDisplay = new google.maps.DirectionsRenderer({polylineOptions: {
+    strokeColor: "red"
+  }
+});
   
-  SafeRoute.MapsController.initialize(SafeRoute.MapsModel, SafeRoute.MapsView, directionsService, directionsDisplay);
-  SafeRoute.MapsModel.initialize(directionsService);
-  SafeRoute.MapsView.initialize(directionsDisplay);
-  
+  SafeRoute.MapsController.initialize(SafeRoute.MapsView, directionsService, directionsDisplay);
   
   SafeRoute.CrimesController.initialize(SafeRoute.CrimesModel);
   
