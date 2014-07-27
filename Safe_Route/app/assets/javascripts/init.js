@@ -6,9 +6,6 @@ $(document).ready(function(){
     });
   
   SafeRoute.MapsController.initialize(SafeRoute.MapsModel, SafeRoute.MapsView, directionsService, directionsDisplay);
-  SafeRoute.MapsModel.initialize(directionsService);
-  SafeRoute.MapsView.initialize(directionsDisplay);
-  
   
   SafeRoute.CrimesController.initialize(SafeRoute.CrimesModel);
   

@@ -10,9 +10,9 @@ SafeRoute.RoutesModel = {
       travelMode: google.maps.TravelMode.WALKING,
       provideRouteAlternatives: true
     }
-    this.routesAlgorithm(this, data, start, end, request, this.directionsService, this.directionsDisplay)
+    this.routesAlgorithm(this, data, request, this.directionsService, this.directionsDisplay)
   },
-  routesAlgorithm: function(model, data, start, end, request, directionsService, directionsDisplay){
+  routesAlgorithm: function(model, data, request, directionsService, directionsDisplay){
     directionsService.route(request, function(result, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(result)

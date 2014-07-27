@@ -1,5 +1,7 @@
 SafeRoute.RoutesView = {
-	// populateMap:function(result, directionsDisplay){
-	// 	directionsDisplay.setDirections(result);
-	// }
+	listenForSubmit: function(controller){
+		$('#locations').on('submit', function(){
+			controller.gatherCrimeData();
+		})
+	}
 }
