@@ -5,16 +5,20 @@ SafeRoute.RoutesController = {
 		this.view = view;
 		this.view.listenForSubmit(this);
 	},
-	analyzeCrimeAndRouteData: function(start, end, data){
-		this.model.renderRoutes(start, end, data)
+	analyzeCrimeAndRouteData: function(data){
+		this.model.renderRoutes(data, this)
 	},
 	render: function(result, directionsDisplay){
 		this.view.populateMap(result, directionsDisplay)
 	},
-	gatherCrimeData: function(start, end){
+	submitPoints: function(){
 		event.preventDefault();
-		var start = $(event.target).serializeArray()[0].value;
-		var end = $(event.target).serializeArray()[1].value;
-		SafeRoute.CrimesController.crimeApiCall(start, end);
+		this.model.definePoints(this, $(event.target).serializeArray()[0].value, $(event.target).serializeArray()[1].value);
+	}, 
+	requestCrimeData: function(){
+		SafeRoute.CrimesController.crimeApiCall();
+	},
+	sendRoutesToView: function(result, directionsDisplay){
+		this.view.populateMap(result, directionsDisplay)
 	}
 }

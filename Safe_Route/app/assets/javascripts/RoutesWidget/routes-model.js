@@ -3,41 +3,33 @@ SafeRoute.RoutesModel = {
     this.directionsService = directionsService;
     this.directionsDisplay = directionsDisplay;
   },
-  renderRoutes: function(start, end, data) {
+  definePoints: function(controller, start, end){
+    this.start = start;
+    this.end = end
+    controller.requestCrimeData();
+  },
+  renderRoutes: function(data, controller) {
     var request = {
-      origin:start,
-      destination:end,
+      origin:this.start,
+      destination:this.end,
       travelMode: google.maps.TravelMode.WALKING,
       provideRouteAlternatives: true
     }
-    this.routesAlgorithm(this, data, request, this.directionsService, this.directionsDisplay)
+    this.routesAlgorithm(controller, this, data, request, this.directionsService, this.directionsDisplay)
   },
-  routesAlgorithm: function(model, data, request, directionsService, directionsDisplay){
-    directionsService.route(request, function(result, status) {
+  routesAlgorithm: function(controller,model, data, request, directionsService, directionsDisplay){
+    directionsService.route(request, function(result, status){
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(result)
         var routes = []
-        var crimesSpots = []
+        var crimeSpots = []
         model.collectAllRoutes(model, result, routes);
-        for (var crimeIndexNumber = 0; crimeIndexNumber < data.features.length; crimeIndexNumber++) {
-          crimesSpots.push([data.features[crimeIndexNumber].geometry.coordinates])
-        }
-        for (var path = 0; path < routes.length; path++) { 
-          var absoluteCrimeScore = 0
-          for(var coord = 0; coord < routes[path].length; coord++) {
-            for(var crime = 0; crime<crimesSpots.length; crime++) {
-              if(model.closeCrimeFinder(routes[path][coord][0], routes[path][coord][1], crimesSpots[crime][0])){
-                absoluteCrimeScore++
-              }
-            }
-          }
-          result.routes[path].score = absoluteCrimeScore/routes[path].length;
-        }
+        model.populateCrimeSpots(crimeSpots, data);
+        model.evaluatePath(routes, crimeSpots, model, result);
         result.routes.sort(function(a,b){
           if (a.score < b.score){return -1} else if (a.score > b.score){return 1} else {return 0}
         })
-        directionsDisplay.setDirections(result)
-        directionsDisplay.setPanel(document.getElementById('directionsPanel'))
+        controller.sendRoutesToView(result, directionsDisplay);
       }
     })
   }, 
@@ -53,6 +45,24 @@ SafeRoute.RoutesModel = {
   addPathToRoute: function(result, index, route){
     for (var j = 0; j < result.routes[index].overview_path.length; j++) {
       route.push([result.routes[index].overview_path[j].k, result.routes[index].overview_path[j].B])
+    }
+  },
+  populateCrimeSpots:function(crimeSpots, data){
+    for (var crimeIndexNumber = 0; crimeIndexNumber < data.features.length; crimeIndexNumber++) {
+      crimeSpots.push([data.features[crimeIndexNumber].geometry.coordinates])
+    }
+  },
+  evaluatePath:function(routes, crimeSpots, model, result){
+    for (var path = 0; path < routes.length; path++) { 
+      var absoluteCrimeScore = 0
+      for(var coord = 0; coord < routes[path].length; coord++) {
+        for(var crime = 0; crime<crimeSpots.length; crime++) {
+          if(model.closeCrimeFinder(routes[path][coord][0], routes[path][coord][1], crimeSpots[crime][0])){
+            absoluteCrimeScore++
+          }
+        }
+      }
+      result.routes[path].score = absoluteCrimeScore/routes[path].length;
     }
   }
 } 
