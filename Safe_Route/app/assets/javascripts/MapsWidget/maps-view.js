@@ -16,6 +16,7 @@ createCoords: function(controller){
 },
 setMapOptions: function(sanFranGoogleObj){
     var mapOptions = {
+      disableDefaultUI: true,
       zoom:13,
       center: sanFranGoogleObj
     }
