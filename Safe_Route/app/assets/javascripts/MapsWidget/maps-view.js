@@ -5,14 +5,14 @@ initialize: function(directionsDisplay) {
 bindListeners: function(controller){
   var self = this
   $('#locations').on('submit', function(){
-    self.createCoords(controller);
+    self.collectCoords(controller);
   })
 },
-createCoords: function(controller){
+collectCoords: function(controller){
   event.preventDefault();
   var start = $(event.target).serializeArray()[0].value
   var end = $(event.target).serializeArray()[1].value
-  controller.fetchCoords(start, end);
+  controller.request(start, end);
 },
 setMapOptions: function(sanFranGoogleObj){
     var mapOptions = {
@@ -21,11 +21,11 @@ setMapOptions: function(sanFranGoogleObj){
     }
       return mapOptions
   },
-createMap: function(sanFranGoogleObj){
+collectMap: function(sanFranGoogleObj){
     var map = new google.maps.Map(document.getElementById("map-canvas"), this.setMapOptions(sanFranGoogleObj));
     return map
   },
 renderMap: function(directionsDisplay, sanFranGoogleObj){
-  directionsDisplay.setMap(this.createMap(sanFranGoogleObj));
+  directionsDisplay.setMap(this.collectMap(sanFranGoogleObj));
   }
 }

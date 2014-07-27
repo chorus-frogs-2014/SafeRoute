@@ -1,5 +1,5 @@
 SafeRoute.RoutesView = {
-	populateMap:function(result, directionsDisplay){
+	render:function(result, directionsDisplay){
 		directionsDisplay.setDirections(result);
 	}
 }
