@@ -4,10 +4,10 @@ SafeRoute.RoutesController = {
 		this.model = model;
 		this.view = view;
 	},
-	analyzeCrimeAndRouteData: function(result, start, end, data){
-		this.model.renderRoutes(result, start, end, data)
+	analyze: function(result, start, end, data){
+		this.model.createRoutes(result, start, end, data)
 	},
-	render: function(result, directionsDisplay){
-		this.view.populateMap(result, directionsDisplay)
+	pass: function(result, directionsDisplay){
+		this.view.render(result, directionsDisplay)
 	}
 }
