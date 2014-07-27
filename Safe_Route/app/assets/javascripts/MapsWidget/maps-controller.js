@@ -8,10 +8,10 @@ SafeRoute.MapsController = {
     this.view.renderMap(directionsDisplay, sanFranGoogleObj);
     this.view.bindListeners(this);
   },
-    fetchCoords: function(start, end){
-      this.model.request(this, start, end)
+    request: function(start, end){
+      this.model.requestCoords(this, start, end)
   },
-    gatherCrimeData: function(result, start, end){
+    collect: function(result, start, end){
       SafeRoute.CrimesController.crimeApiCall(result, start, end)
   }
 }
