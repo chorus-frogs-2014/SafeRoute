@@ -6,6 +6,6 @@ SafeRoute.RoutesView = {
 	}, 
 	populateMap: function(result, directionsDisplay){
 		directionsDisplay.setDirections(result);
-    directionsDisplay.setPanel(document.getElementById('directionsPanel'));
-  }
+		directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+	}
 }
