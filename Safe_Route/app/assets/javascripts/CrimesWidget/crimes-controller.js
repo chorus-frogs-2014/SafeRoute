@@ -3,11 +3,11 @@ SafeRoute.CrimesController = {
 	initialize: function(model){
 		this.model = model;
 	},
-	crimeApiCall: function(result, start, end){
-		this.model.crimeDataGrabber(this, result,start, end)
+	crimeApiCall: function(start, end){
+		this.model.crimeDataGrabber(this, start, end)
 
 	},
-	sendToRoutes: function(result, start, end, data){
-		SafeRoute.RoutesController.analyzeCrimeAndRouteData(result, start, end, data);
+	sendToRoutes: function(start, end, data){
+		SafeRoute.RoutesController.analyzeCrimeAndRouteData(start, end, data);
 	}
 }

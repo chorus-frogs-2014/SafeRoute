@@ -11,7 +11,7 @@ SafeRoute.MapsController = {
     fetchCoords: function(start, end){
       this.model.request(this, start, end)
   },
-    gatherCrimeData: function(result, start, end){
-      SafeRoute.CrimesController.crimeApiCall(result, start, end)
+    gatherCrimeData: function(start, end){
+      SafeRoute.CrimesController.crimeApiCall(start, end)
   }
 }
