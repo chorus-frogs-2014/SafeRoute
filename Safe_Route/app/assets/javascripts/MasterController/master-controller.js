@@ -1,12 +1,11 @@
 var SafeRoute = SafeRoute || {}
 SafeRoute.MasterController = {
-  initialize: function(model, view, MapsController, MapsView, CrimesController, directionsDisplay){
+  initialize: function(MapsController, MapsView, CrimesController, RoutesController, directionsDisplay){
     this.sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
-    this.model = model;
-    this.view = view;
     this.MapsController = MapsController;
     this.MapsView = MapsView;
     this.CrimesController = CrimesController;
+    this.RoutesController = RoutesController;
     this.directionsDisplay = directionsDisplay;
     this.run();
   },
@@ -17,12 +16,13 @@ SafeRoute.MasterController = {
   bindListeners: function(){
    $('#locations').on('submit', this.MapsController.collectCoords);
   },
-  collectMapData: function(mapData){
-    this.mapsData = mapData
+  collectMapData: function(mapsData){
+    this.mapsData = mapsData
+    this.CrimesController.request();
   },
   collectCrimeData: function(crimeData){
-    this.crimesData = crimeData
-    console.log(this.crimesData)
+    this.crimeData = crimeData
+    console.log(this.crimeData)
     console.log(this.mapsData)
 
   }

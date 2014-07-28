@@ -2,7 +2,6 @@ var SafeRoute = SafeRoute || {}
 SafeRoute.CrimesController = {
   initialize: function(model){
     this.model = model;
-    this.request();
   },
   request: function(){
     this.model.requestCrimes(this)

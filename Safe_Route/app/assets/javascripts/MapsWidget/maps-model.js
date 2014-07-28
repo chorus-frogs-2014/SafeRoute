@@ -1,7 +1,6 @@
 SafeRoute.MapsModel = {
-  initialize: function(directionsService, MasterController) {
+  initialize: function(directionsService) {
     this.directionsService = directionsService;
-    this.MasterController = MasterController;
   },
   requestRoutes: function(self, start, end){
     var request = {
@@ -19,6 +18,6 @@ SafeRoute.MapsModel = {
     collect: function(result, start, end){
       var mapsData = [];
       mapsData.push(result, start, end);
-      this.MasterController.collectMapData(mapsData);
+      SafeRoute.MasterController.collectMapData(mapsData);
   }
 }
