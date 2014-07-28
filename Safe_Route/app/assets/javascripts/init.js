@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$('#contact_info').hide();
   var directionsService = new google.maps.DirectionsService();
   var directionsDisplay = new google.maps.DirectionsRenderer();
   

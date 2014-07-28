@@ -92,7 +92,7 @@ SafeRoute.RoutesModel = {
           }
         ],
         'autotext':'true',
-        'subject':'Your subject here!'
+        'subject':'SafeRoute Directions!'
       }
     }
     }).done(function(data){
