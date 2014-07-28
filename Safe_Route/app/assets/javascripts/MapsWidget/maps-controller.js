@@ -1,8 +1,16 @@
 var SafeRoute = SafeRoute || {}
+
 SafeRoute.MapsController = {
-  initialize: function(view, directionsService, directionsDisplay){
-    var sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
+    initialize: function(model, view){
+    this.model = model;
     this.view = view;
-    this.view.renderMap(this, directionsDisplay, sanFranGoogleObj);
+  },
+
+  collectCoords: function(){
+  var self = SafeRoute.MapsController
+  event.preventDefault();
+  var start = $(event.target).serializeArray()[0].value
+  var end = $(event.target).serializeArray()[1].value
+  self.model.requestRoutes(self, start, end)
   }
 }
