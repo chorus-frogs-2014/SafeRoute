@@ -1,0 +1,62 @@
+.welcome-container {
+
+  display: inline-block;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+
+#locations {
+
+    display:block;
+    z-index:1;
+}
+
+html {height: 100%}
+body {
+  height: 100%;
+/*  background-image: url("city.jpg");*/
+}
+
+#map-canvas {
+  height: 100%;
+  width: 100%;
+  float: left;
+  position: relative
+}
+
+#locations{
+  width: 20%;
+  right: 0;
+  position: fixed;
+  /*height: 100%;*/
+  z-index:100;
+}
+
+#directionsPanel {
+  float:right;
+  width: 20%;
+  position: absolute;
+  height: 100%;
+  z-index:10;
+}
+
+.adp-listsel{
+  background: none;
+}
+
+.adp-fullwidth tbody tr:nth-child(2){
+  background-color: green;
+}
+.adp-fullwidth tbody tr:nth-child(3){
+  background-color: yellow;
+}
+.adp-fullwidth tbody tr:nth-child(4){
+  background-color: red;
+}
