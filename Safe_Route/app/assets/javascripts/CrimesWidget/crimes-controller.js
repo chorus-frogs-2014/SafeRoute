@@ -10,6 +10,6 @@ SafeRoute.CrimesController = {
   collect: function(data){
     var crimesData = [];
     crimesData.push(data);
-    return crimesData[0].features
+    SafeRoute.MasterController.collectCrimeData(crimesData[0].features)
   }
 }
