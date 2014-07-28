@@ -3,7 +3,7 @@ SafeRoute.RoutesController = {
     this.model = model;
     this.view = view;
   },
-  collectMapAndCrimeData: function(mapsData, crimesData){
+  collectMapAndCrimeData: function(mapsData, crimesData) {
     this.model.parseData(this, mapsData, crimesData);
   },
   sendRoutesToView: function(result, directionsDisplay){

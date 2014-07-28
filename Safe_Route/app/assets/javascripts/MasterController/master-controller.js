@@ -1,3 +1,4 @@
+// I find the folder to be confusing
 var SafeRoute = SafeRoute || {}
 SafeRoute.MasterController = {
   initialize: function(MapsController, MapsView, CrimesController, RoutesController, directionsDisplay){
@@ -10,11 +11,14 @@ SafeRoute.MasterController = {
     this.run();
   },
   run: function(){
-      this.bindListeners();
-  // this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
-    },
+    this.bindListeners();
+    // this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
+  },
   bindListeners: function(){
-   $('#locations').on('submit', this.MapsController.collectCoords);
+   $('#locations').on('submit', function() {
+      // disable submit and display "working"
+      this.MapsController.collectCoords();
+    }.bind(this));
   },
   collectMapData: function(mapsData){
     this.mapsData = mapsData
