@@ -1,25 +1,28 @@
-html {height: 100%}
-body {height: 100%}
+html {height: 100%;}
+body {height: 100%; margin: 0;}
 
 #map-canvas {
   height: 100%;
   width: 100%;
   position: relative
 }
+/*#contact{
 
+}*/
+
+#contact_info{
+  width: 10%;
+  right: 0%;
+  position: fixed;
+  z-index:1;
+}
 #locations{
-  width: 20%;
-  right: 0;
+  width: 10%;
+  right: 10%;
   position: fixed;
   z-index:1;
 }
 
-#contact{
-  width: 20%;
-  right: 20%;
-  position: fixed;
-  z-index:1;
-}
 
 #directionsPanel {
   float:right;

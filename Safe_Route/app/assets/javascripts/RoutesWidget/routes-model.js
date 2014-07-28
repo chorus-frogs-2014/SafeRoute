@@ -13,11 +13,12 @@ SafeRoute.RoutesModel = {
       origin:this.start,
       destination:this.end,
       travelMode: google.maps.TravelMode.WALKING,
-      // provideRouteAlternatives: true
+      provideRouteAlternatives: true
     }
     this.routesAlgorithm(controller, this, data, request, this.directionsService, this.directionsDisplay)
   },
   routesAlgorithm: function(controller,model, data, request, directionsService, directionsDisplay){
+    // console.log(data)
     directionsService.route(request, function(result, status){
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(result)
@@ -29,7 +30,7 @@ SafeRoute.RoutesModel = {
         result.routes.sort(function(a,b){
           if (a.score < b.score){return -1} else if (a.score > b.score){return 1} else {return 0}
         })
-        controller.sendRoutesToView(result, directionsDisplay, routes);
+        controller.sendRoutesToView(result, directionsDisplay);
       }
     })
   }, 
@@ -64,5 +65,39 @@ SafeRoute.RoutesModel = {
       }
       result.routes[path].score = absoluteCrimeScore/routes[path].length;
     }
+  },
+  storeContacts: function(directions, phone, email){
+    this.phone = phone;
+    this.email = email;
+    this.sendText(this.phone)
+    this.sendEmail(directions, this.email)
+  },
+  sendText: function(phone){
+
+  },
+  sendEmail: function(directions, email){
+     $.ajax({
+      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+      type: 'POST',
+      data: {
+      'key': "kw7GF1wkNIN7P2ZVseK9JQ",
+      'message':{
+        'text': directions,
+        'from_email': 'SafeRoute@SafeRoute.com',
+        'to':[
+          {
+            'email': email,
+            'name': 'Austin',
+            'type': 'to'
+          }
+        ],
+        'autotext':'true',
+        'subject':'Your subject here!'
+      }
+    }
+    }).done(function(data){
+      // console.log("hey")
+    })
   }
+
 } 

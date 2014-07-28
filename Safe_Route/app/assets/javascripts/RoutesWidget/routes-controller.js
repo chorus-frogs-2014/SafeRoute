@@ -8,17 +8,18 @@ SafeRoute.RoutesController = {
 	analyzeCrimeAndRouteData: function(data){
 		this.model.renderRoutes(data, this)
 	},
-	render: function(result, directionsDisplay){
-		this.view.populateMap(result, directionsDisplay)
-	},
 	submitPoints: function(){
 		event.preventDefault();
-		this.model.definePoints(this, $(event.target).serializeArray()[0].value, $(event.target).serializeArray()[1].value, $(event.target).serializeArray()[0].value, $(event.target).serializeArray()[0].value);
+		this.model.definePoints(this, $(event.target).serializeArray()[0].value, $(event.target).serializeArray()[1].value);
 	}, 
 	requestCrimeData: function(){
 		SafeRoute.CrimesController.crimeApiCall();
 	},
 	sendRoutesToView: function(result, directionsDisplay){
 		this.view.populateMap(result, directionsDisplay)
+	},
+	submitContacts: function(directions){
+		event.preventDefault();
+		this.model.storeContacts(directions, $(event.target).serializeArray()[0].value, $(event.target).serializeArray()[1].value);
 	}
 }
