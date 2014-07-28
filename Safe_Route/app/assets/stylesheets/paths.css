@@ -1,27 +1,35 @@
 .welcome-container {
-
-  display: inline-block;
+  display: block;
   overflow-y: hidden;
   overflow-x: hidden;
   height: 100%;
   width: 100%;
   position: absolute;
+
   top: 0;
   left: 0;
 }
 
+/*.user-input {
+  margin: auto;
 
+  width: 400px;
+  height: 100px;
+  background-color: black;
+  z-index:1;
+}*/
 
 #locations {
 
-    display:block;
-    z-index:1;
+    display: block;
+    z-index:2;
 }
 
 html {height: 100%}
 body {
   height: 100%;
-/*  background-image: url("city.jpg");*/
+  background-image: url("city.jpg");
+  z-index:0;
 }
 
 #map-canvas {
