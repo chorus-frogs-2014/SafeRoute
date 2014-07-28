@@ -4,8 +4,8 @@ SafeRoute.RoutesModel = {
     this.directionsDisplay = directionsDisplay;
   },
   parseData: function(controller, mapsData, crimesData){
-    var start = mapsData[1];
-    var end = mapsData[2];
+    var start = mapsData[0];
+    var end = mapsData[1];
     this.createRoutes(controller, start, end, crimesData);
   },
   createRoutes: function(controller, start, end, data) {
@@ -15,16 +15,17 @@ SafeRoute.RoutesModel = {
       travelMode: google.maps.TravelMode.WALKING,
       provideRouteAlternatives: true
     }
-    this.routesAlgorithm(controller, this, data, request, this.directionsService, this.directionsDisplay)
+    this.routesAlgorithm(controller, data, request, this.directionsService, this.directionsDisplay)
   },
-  routesAlgorithm: function(controller,model, data, request, directionsService, directionsDisplay){
+  routesAlgorithm: function(controller, data, request, directionsService, directionsDisplay){
+    var self = this
     directionsService.route(request, function(result, status){
       if (status == google.maps.DirectionsStatus.OK) {
         var routes = []
         var crimeSpots = []
-        model.collectAllRoutes(model, result, routes);
-        model.populateCrimeSpots(crimeSpots, data);
-        model.evaluatePath(routes, crimeSpots, model, result);
+        self.collectAllRoutes(self, result, routes);
+        self.populateCrimeSpots(crimeSpots, data);
+        self.evaluatePath(routes, crimeSpots, self, result);
         result.routes.sort(function(a,b){
           if (a.score < b.score){return -1} else if (a.score > b.score){return 1} else {return 0}
         })
@@ -36,9 +37,9 @@ SafeRoute.RoutesModel = {
   closeCrimeFinder: function(lat, lon, crimeCoord){
     return Math.abs(lat - crimeCoord[1]) < .0005 && Math.abs(lon - crimeCoord[0]) < .0005
   },
-  collectAllRoutes: function(model, result, routes){
+  collectAllRoutes: function(self, result, routes){
     for (var routeIndex = 0; routeIndex <result.routes.length; routeIndex++) {
-      model.addPathToRoute(result, routeIndex, route = []);
+      self.addPathToRoute(result, routeIndex, route = []);
       routes.push(route)
     }
   },
@@ -52,17 +53,24 @@ SafeRoute.RoutesModel = {
       crimeSpots.push([data.features[crimeIndexNumber].geometry.coordinates])
     }
   },
-  evaluatePath:function(routes, crimeSpots, model, result){
+  evaluatePath:function(routes, crimeSpots, self, result){
     for (var path = 0; path < routes.length; path++) {
       var absoluteCrimeScore = 0
-      for(var coord = 0; coord < routes[path].length; coord++) {
-        for(var crime = 0; crime<crimeSpots.length; crime++) {
-          if(model.closeCrimeFinder(routes[path][coord][0], routes[path][coord][1], crimeSpots[crime][0])){
-            absoluteCrimeScore++
-          }
-        }
-      }
+      self.evaluateCoord(absoluteCrimeScore, routes, path, crimeSpots, self)
+
       result.routes[path].score = absoluteCrimeScore/routes[path].length;
+    }
+  },
+  evaluateCoord: function(absoluteCrimeScore, routes, path, crimeSpots, self){
+    for(var coord = 0; coord < routes[path].length; coord++) {
+      self.checkForLocalCrimes(absoluteCrimeScore, routes, path, crimeSpots, self, coord);
+    }
+  },
+  checkForLocalCrimes: function(absoluteCrimeScore, routes, path, crimeSpots, self, coord){
+    for(var crime = 0; crime<crimeSpots.length; crime++) {
+      if(self.closeCrimeFinder(routes[path][coord][0], routes[path][coord][1], crimeSpots[crime][0])){
+        absoluteCrimeScore++
+      }
     }
   }
 }

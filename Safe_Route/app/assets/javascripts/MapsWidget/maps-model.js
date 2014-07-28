@@ -3,21 +3,10 @@ SafeRoute.MapsModel = {
     this.directionsService = directionsService;
   },
   requestRoutes: function(self, start, end){
-    var request = {
-      origin:start,
-      destination:end,
-      travelMode: google.maps.TravelMode.WALKING,
-      provideRouteAlternatives: true
-    };
-    this.directionsService.route(request, function(result, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-        self.model.collect(result, start, end)
-      }
-    });
+    self.model.collect(start, end)
   },
-    collect: function(result, start, end){
-      var mapsData = [];
-      mapsData.push(result, start, end);
-      SafeRoute.MasterController.collectMapData(mapsData);
+  collect: function(start, end){
+    var mapsData = [start, end];
+    SafeRoute.MasterController.collectMapData(mapsData);
   }
 }
