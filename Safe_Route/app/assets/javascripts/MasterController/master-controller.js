@@ -20,16 +20,8 @@ SafeRoute.MasterController = {
     this.mapsData = mapsData
     this.CrimesController.request();
   },
-  collectCrimeData: function(crimeData){
-    this.crimeData = crimeData
-    console.log(this.crimeData)
-    console.log(this.mapsData)
-
+  collectCrimeData: function(crimesData){
+    this.crimesData = crimesData
+    this.RoutesController.collectMapAndCrimeData(this.mapsData, this.crimesData)
   }
-  // analyzeCrimeAndRouteData: function(result, start, end, data){
-  //   this.model.renderRoutes(result, start, end, data)
-  // },
-  // render: function(result, directionsDisplay){
-  //   this.view.populateMap(result, directionsDisplay)
-  // }
 }
