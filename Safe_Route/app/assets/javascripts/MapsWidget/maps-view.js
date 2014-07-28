@@ -1,8 +1,4 @@
 SafeRoute.MapsView = {
-initialize: function(directionsDisplay) {
-    this.directionsDisplay = directionsDisplay
-  },
-
 setMapOptions: function(sanFranGoogleObj){
     var mapOptions = {
       zoom:13,

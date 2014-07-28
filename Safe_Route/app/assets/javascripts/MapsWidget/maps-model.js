@@ -1,8 +1,9 @@
 SafeRoute.MapsModel = {
-  initialize: function(directionsService) {
+  initialize: function(directionsService, MasterController) {
     this.directionsService = directionsService;
+    this.MasterController = MasterController;
   },
-  requestRoutes: function(controller, start, end){
+  requestRoutes: function(self, start, end){
     var request = {
       origin:start,
       destination:end,
@@ -11,13 +12,13 @@ SafeRoute.MapsModel = {
     };
     this.directionsService.route(request, function(result, status) {
       if (status == google.maps.DirectionsStatus.OK) {
-        return this.collect(result, start, end)
+        self.model.collect(result, start, end)
       }
     });
   },
     collect: function(result, start, end){
       var mapsData = [];
       mapsData.push(result, start, end);
-      return mapsData;
+      this.MasterController.collectMapData(mapsData);
   }
 }
