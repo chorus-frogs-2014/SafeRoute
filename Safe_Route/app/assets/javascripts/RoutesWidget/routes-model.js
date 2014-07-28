@@ -13,13 +13,13 @@ SafeRoute.RoutesModel = {
       origin:start,
       destination:end,
       travelMode: google.maps.TravelMode.WALKING,
+      provideRouteAlternatives: true
     }
     this.routesAlgorithm(controller, this, data, request, this.directionsService, this.directionsDisplay)
   },
   routesAlgorithm: function(controller,model, data, request, directionsService, directionsDisplay){
     directionsService.route(request, function(result, status){
       if (status == google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(result)
         var routes = []
         var crimeSpots = []
         model.collectAllRoutes(model, result, routes);
@@ -28,6 +28,7 @@ SafeRoute.RoutesModel = {
         result.routes.sort(function(a,b){
           if (a.score < b.score){return -1} else if (a.score > b.score){return 1} else {return 0}
         })
+
         controller.sendRoutesToView(result, directionsDisplay);
       }
     })
