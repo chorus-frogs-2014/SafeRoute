@@ -2,18 +2,17 @@ var SafeRoute = SafeRoute || {}
 
 SafeRoute.MapsController = {
     initialize: function(model, view, directionsService, directionsDisplay){
-    var sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
+    this.sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
     this.model = model;
     this.view = view;
-    this.view.render(directionsDisplay, sanFranGoogleObj);
-    this.view.bindListeners(this);
+    // this.view.render(directionsDisplay, sanFranGoogleObj);
+    // this.view.bindListeners(this);
   },
-    request: function(start, end){
-      this.model.requestRoutes(this, start, end)
-  },
-    collect: function(result, start, end){
-      var mapsData = [];
-      mapsData.push(result, start, end);
-      return mapsData;
+
+createCoords: function(){
+  event.preventDefault();
+  var start = $(event.target).serializeArray()[0].value
+  var end = $(event.target).serializeArray()[1].value
+  return this.model.requestRoutes(this, start, end)
   }
 }
