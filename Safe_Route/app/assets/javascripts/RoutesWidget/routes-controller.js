@@ -4,6 +4,9 @@ SafeRoute.RoutesController = {
     this.view = view;
   },
   collectMapAndCrimeData: function(mapsData, crimesData){
-    console.log(mapsData, crimesData);
+    this.model.parseData(this, mapsData, crimesData);
+  },
+  sendRoutesToView: function(result, directionsDisplay){
+    this.view.render(result, directionsDisplay);
   }
 }
