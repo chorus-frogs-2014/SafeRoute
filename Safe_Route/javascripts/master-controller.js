@@ -12,7 +12,7 @@ SafeRoute.MasterController = {
   run: function(){
       this.bindListeners();
       alert("I work!")
-  // this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
+  this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
     },
   bindListeners: function(){
    $('#locations').on('submit', this.MapsController.collectCoords);
