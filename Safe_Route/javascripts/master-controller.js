@@ -4,6 +4,8 @@ SafeRoute.MasterController = {
         this.sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
         this.directionsDisplay = new google.maps.DirectionsRenderer();
         this.directionsService = new google.maps.DirectionsService();
+        this.locationObject = new google.maps.LatLng;
+        this.geoCoder = new google.maps.Geocoder();
         this.MapsController = MapsController;
         this.MapsModel = MapsModel;
         this.MapsView = MapsView;
@@ -22,6 +24,7 @@ SafeRoute.MasterController = {
     },
     run: function() {
         this.bindListeners();
+        this.MapsController.getGeoLocation(this.locationObject, this.geoCoder);
         this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
     },
     bindListeners: function() {
