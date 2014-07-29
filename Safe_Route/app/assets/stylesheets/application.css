@@ -1,14 +1,47 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require normalize
- *= require_tree .
- */
+html {height: 100%;}
+body {height: 100%; margin: 0;}
+
+#map-canvas {
+  height: 100%;
+  width: 100%;
+  position: relative
+}
+/*#contact{
+
+}*/
+
+#contact_info{
+  width: 10%;
+  right: 0%;
+  position: fixed;
+  z-index:1;
+}
+#locations{
+  width: 10%;
+  right: 0%;
+  position: fixed;
+  z-index:1;
+}
+
+
+#directionsPanel {
+  float:right;
+  width: 20%;
+  position: absolute;
+  height: 100%;
+  z-index:1;
+}
+
+.adp-listsel{
+  background: none;
+}
+
+.adp-fullwidth tbody tr:nth-child(2){
+  background-color: green;
+}
+.adp-fullwidth tbody tr:nth-child(3){
+  background-color: yellow;
+}
+.adp-fullwidth tbody tr:nth-child(4){
+  background-color: red;
+}

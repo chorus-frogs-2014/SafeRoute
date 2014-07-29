@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SafeRoute</title>
+  <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" src="../../assets/javascripts/CrimesWidget/crimes-controller.js"></script>
+  <script type="text/javascript" src="../../assets/javascripts/CrimesWidget/crimes-model.js"></script>
+  <script type="text/javascript" src="../../assets/javascripts/MapsWidget/maps-controller.js"></script>
+</head>
+<div>
+  <form id="locations">
+    <input type="text" value = "1600 15th st sf" name="start" placeholder="start" />
+    <input type="text" value = "1489 webster st sf" name="end" placeholder="end" />
+    <input type="submit" />
+  </form>
+</div>
+<div>
+  <form id="contact_info">
+    <input type="text" value = "5104575279" name="phone"/>
+    <input type="email" value = "austinbourdier@gmail.com" name="email"/>
+    <input type="submit" />
+  </form>
+</div>
+
+<div id="directionsPanel">
+</div>
+
+
+<div id="map-canvas" />
+
+
+<body>
+
+
+</body>
+</html>
