@@ -1,11 +1,9 @@
 var SafeRoute = SafeRoute || {}
 
 SafeRoute.MapsController = {
-    initialize: function(model, view){
+    initialize: function(model){
     this.model = model;
-    this.view = view;
   },
-
   collectCoords: function(){
   var self = SafeRoute.MapsController
   event.preventDefault();
