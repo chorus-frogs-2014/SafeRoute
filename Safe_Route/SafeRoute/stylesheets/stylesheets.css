@@ -20,6 +20,7 @@ html {height: 100%}
 body {
   height: 100%;
   /*background-image: url("city.jpg");*/
+  /*background-color: black;*/
   z-index:0;
 }
 
