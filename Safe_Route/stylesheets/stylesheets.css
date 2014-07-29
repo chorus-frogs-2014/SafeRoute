@@ -15,7 +15,7 @@
 }
 html {
     overflow: hidden;
-    height: 100%
+    height: 100%;
 }
 body {
     height: 100%;
@@ -39,8 +39,10 @@ body {
     z-index: 100;
 }
 #directionsPanel {
+  margin-top: 100px;
+    color: white;
     padding-left: 2px;
-    width: 10%;
+    width: 22%;
     position: absolute;
     height: 70%;
     z-index: 10;
@@ -51,10 +53,13 @@ body {
 }
 .adp-fullwidth tbody tr:nth-child(2) {
     background-color: green;
+    color: white;
 }
 .adp-fullwidth tbody tr:nth-child(3) {
-    background-color: yellow;
+    background-color: orange;
+    color: white;
 }
 .adp-fullwidth tbody tr:nth-child(4) {
     background-color: red;
+    color: white;
 }
