@@ -21,9 +21,9 @@ body {
     z-index: 0;
 }
 #map-canvas {
-    height: 60%;
-    width: 60%;
-    float: left;
+    height: 80%;
+    width: 80%;
+    /*float: left;*/
     position: relative
 }
 #locations {
