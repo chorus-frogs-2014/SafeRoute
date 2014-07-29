@@ -10,3 +10,4 @@ SafeRoute.MapsModel = {
     SafeRoute.MasterController.collectMapData(mapsData);
   }
 }
+
