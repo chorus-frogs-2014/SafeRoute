@@ -11,6 +11,7 @@ SafeRoute.MasterController = {
   },
   run: function(){
       this.bindListeners();
+      alert("I work!")
   // this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
     },
   bindListeners: function(){
