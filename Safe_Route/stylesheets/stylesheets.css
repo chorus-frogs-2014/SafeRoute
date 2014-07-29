@@ -2,7 +2,7 @@
     display: block;
     overflow-y: hidden;
     overflow-x: hidden;
-
+    background-color: cornflowerblue;
     height: 100%;
     width: 100%;
     position: absolute;
@@ -19,15 +19,17 @@ html {
 }
 body {
     height: 100%;
-    /*background-image: url("city.jpg");*/
     z-index: 0;
 }
 #map-canvas {
-  /*margin: auto;*/
+    /*margin: auto;*/
+    float: right;
+    border: 2px solid black;
     height: 70%;
-    width: 80%;
+    width: 60%;
     margin-top: 100px;
-    position: relative
+    margin-right: 250px;
+    position: relative;
 }
 #locations {
     width: 20%;
@@ -37,12 +39,12 @@ body {
     z-index: 100;
 }
 #directionsPanel {
-    float: right;
-    width: 20%;
+    padding-left: 2px;
+    width: 10%;
     position: absolute;
-    height: 100%;
+    height: 70%;
     z-index: 10;
-    background-color: white;
+    background-color: cornflowerblue;
 }
 .adp-listsel {
     background: none;
