@@ -1,4 +1,6 @@
 html, body {
+    overflow-x: hidden;
+    overflow-y: hidden;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -6,11 +8,18 @@ html, body {
     background-color: #EFEFEF;
 }
 .main-content {
-    /*background-color:  #EFEFEF;*/
     min-height: 100%;
     position: relative;
     overflow: auto;
     z-index: 0;
+}
+.please-wait{
+
+  width: 500px;
+  color: grey;
+  text-align: center;
+  font-size: 1.4em;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 .slogan{
   margin-top: 77px;
@@ -35,6 +44,7 @@ html, body {
     background-color: #333739!important;
 }
 .bottom_block {
+    text-align: center;
     position: absolute;
     width: 100%;
     display: block;
