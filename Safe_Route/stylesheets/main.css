@@ -42,6 +42,7 @@ h1{
 
 
 #locations{
+  display: none;
 }
 
 #contact{

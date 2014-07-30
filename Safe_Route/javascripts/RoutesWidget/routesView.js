@@ -8,7 +8,6 @@ SafeRoute.RoutesView = {
   },
   setMapOptions: function(sanFranGoogleObj){
     var mapOptions = {
-      mapTypeId: google.maps.MapTypeId.SATELLITE,
       zoom:13,
       center: sanFranGoogleObj,
       streetViewControl: false,
@@ -23,8 +22,8 @@ SafeRoute.RoutesView = {
     var heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatMapData,
       radius: 100,
-      opacity: .8,
-      maxIntensity: .01
+      opacity: .5,
+      maxIntensity: .9
     });
     heatmap.setMap(this.map)
   }
