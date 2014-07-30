@@ -24,16 +24,24 @@ SafeRoute.MasterController = {
         this.bindListeners();
         this.MapsController.fetchCurrentLocation();
         this.MapsView.renderMap(this.directionsDisplay, this.sanFranGoogleObj);
+        this.CrimesController.request();
     },
     bindListeners: function() {
         $('#locations').on('submit', this.MapsController.collectCoords);
     },
     collectMapData: function(mapsData) {
         this.mapsData = mapsData
-        this.CrimesController.request();
+        if (this.crimesData != undefined){
+            this.sendDataToRoutes();
+        }
+        else{
+            alert("Just One Moment, Please Try Again")
+        }
     },
     collectCrimeData: function(crimesData) {
         this.crimesData = crimesData
+    },
+    sendDataToRoutes: function(){
         this.RoutesController.collectMapAndCrimeData(this.mapsData, this.crimesData)
     }
 }
