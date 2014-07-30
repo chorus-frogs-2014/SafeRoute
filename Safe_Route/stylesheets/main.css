@@ -74,8 +74,9 @@ html, body {
 }
 h1 {
     margin: 0;
-    font-family: "break the silence";
-    font-size: 3.5em;
+    padding-left: 15px;
+    font-family: 'Qwigley', cursive;
+    font-size: 5.0em;
     color: #2ECC71!important;
 }
 #map-canvas {
