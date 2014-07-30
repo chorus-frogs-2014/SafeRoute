@@ -12,9 +12,14 @@ html, body {
     overflow: auto;
     z-index: 0;
 }
-.content-footer{
+.slogan{
+  margin-top: 77px;
+  display: inline-table;
   color: white;
-  text-align: center;
+  text-align: right;
+  margin-left: 55px;
+  font-size: 1.2em;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 .background {
     position: absolute;
@@ -71,7 +76,7 @@ html, body {
     height: 4em;
 }
 h1 {
-    display: inline-table;
+    display: inherit;
     margin: 0;
     padding-left: 15px;
     padding-top: 5px;
