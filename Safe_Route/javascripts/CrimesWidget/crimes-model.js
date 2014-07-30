@@ -6,7 +6,9 @@ SafeRoute.CrimesModel = {
       type: 'GET',
       dataType: 'jsonp'
     }).done(function(data){
-      $('#fountainG').hide();
+      $('#locations').hide();
+      $('#contact').show();
+      $('#directionsPanel').show();
       controller.collect(data)
     })
   }
