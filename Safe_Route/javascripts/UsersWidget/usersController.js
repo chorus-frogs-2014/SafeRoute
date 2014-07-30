@@ -10,6 +10,6 @@ SafeRoute.UsersController = {
         this.view.render(results);
     },
     notify: function(){
-      this.view.errror();
+      SafeRoute.UsersView.failure();
     }
 }

@@ -2,7 +2,8 @@ SafeRoute.MapsView = {
     options: function(sanFranGoogleObj) {
         var mapOptions = {
             zoom: 13,
-            center: sanFranGoogleObj
+            center: sanFranGoogleObj,
+            streetViewControl: false
         }
         return mapOptions
     },
