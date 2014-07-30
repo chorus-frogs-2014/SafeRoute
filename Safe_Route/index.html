@@ -4,12 +4,13 @@
 <head>
     <title>SafeRoute</title>
     <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css">
+    <script type="text/javascript"
+  src="http://maps.googleapis.com/maps/api/js?libraries=visualization"></script>
+    <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/dynamics.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <!-- // <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> -->
     <script type="text/javascript" src="javascripts/init.js"></script>
     <script type="text/javascript" src="javascripts/master-controller.js"></script>
     <script type="text/javascript" src="javascripts/CrimesWidget/crimes-controller.js"></script>
@@ -24,7 +25,7 @@
 
 <body>
     <div id = "logo">
-    <h1>SafeRoute</h1>
+        <h1>SafeRoute</h1>
     </div>
     <span id = "forms">
       <form id="locations">
@@ -46,70 +47,6 @@
 <span id = "legend">sup</span>
 <div id="map-canvas" />
 
-        <!-- <header class="title">
-            <span>SafeRoute</span>
-            <span class="slogan">Arrive Safely</span>
-        </header>
+</body>
 
-        <div id="map-canvas" />
-    </div>
-
-
-        <div id="directionsPanel">
-        </div>
-                <div id = "forms">
-            <form id="locations">
-                <input type="text" value="1600 15th St. San Francisco, CA" name="start" placeholder="start" />
-                <input type="text" value="1489 Webster St. San Francisco, CA" name="end" placeholder="end" />
-                <input type="submit" value="GO!" />
-            </form>
-
-            <form id="contact">
-                <input type="text" value="austinbourdier@gmail.com" name="email"/>
-                <input type="text" value="5104575279" name="phone" />
-
-                <input type="submit" />
-            </form>
-        </div> -->
-    </body>
-
-    </html>
-
-<!-- 
-<div id="fg-wrapper">
-<div id="fountainG">
-<div id="fountainG_1" class="fountainG">
-</div>
-<div id="fountainG_2" class="fountainG">
-</div>
-<div id="fountainG_3" class="fountainG">
-</div>
-<div id="fountainG_4" class="fountainG">
-</div>
-<div id="fountainG_5" class="fountainG">
-</div>
-<div id="fountainG_6" class="fountainG">
-</div>
-<div id="fountainG_7" class="fountainG">
-</div>
-<div id="fountainG_8" class="fountainG">
-</div>
-</div>
-</div> -->
-
-
-
-
-
-<!-- <div class=user-input>
-<form class="form-container">
-<div class="form-title"><h2></h2></div>
-<div class="form-title">CURRENT LOCATION</div>
-<input class="form-field" type="text" name="start" placeholder="1600 15th St. San Francisco, CA" /><br />
-<div class="form-title">DESTINATION</div>
-<input class="form-field" type="text" name="end" placeholder="1489 Webster St. San Francisco, CA" /><br />
-<div class="submit-container">
-<input class="submit-button" type="submit" value="Submit" />
-</div>
-</form>
-</div> -->
+</html>
