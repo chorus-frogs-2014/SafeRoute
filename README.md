@@ -1,11 +1,11 @@
 <h1>Safe Route</h1>
 <h4>Arrive Safely</h4>
 <p>Authored by:
-  <a href = "https://github.com/austinbourdier">Austin Bourdier</a>
-  <a href = "https://github.com/smileyface525">Eiko Seino</a>
-  <a href = "https://github.com/scottjason">Ryan Stack</a>
-  <a href = "https://github.com/stackdaddy">Scott Jason</a>
-
+  <a href = "https://github.com/austinbourdier">Austin Bourdier</a>,
+  <a href = "https://github.com/smileyface525">Eiko Seino</a>,
+  <a href = "https://github.com/stackdaddy">Ryan Stack</a>, and
+  <a href = "https://github.com/scottjason">Scott Jason</a>
+</p>
 <h3>Overview</h3>
 <h3>Process</h3>
 <h3>Code Design</h3>
