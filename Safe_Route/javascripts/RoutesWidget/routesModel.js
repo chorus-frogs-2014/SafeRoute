@@ -2,8 +2,14 @@ SafeRoute.RoutesModel = {
   initialize: function(directionsService, directionsDisplay){
     this.directionsService = directionsService;
     this.directionsDisplay = directionsDisplay;
+    this.heatMapData = [];
   },
   parseData: function(controller, mapsData, crimesData){
+    for (var crime = 0; crime < crimesData.features.length; crime++){
+      
+      
+      SafeRoute.RoutesModel.heatMapData.push({location: new google.maps.LatLng(crimesData.features[crime].geometry.coordinates[1], crimesData.features[crime].geometry.coordinates[0]), weight: Math.random()*100})
+    }
     var start = mapsData[0];
     var end = mapsData[1];
     this.createRoutes(controller, start, end, crimesData);
@@ -30,7 +36,7 @@ SafeRoute.RoutesModel = {
           if (a.score < b.score){return -1} else if (a.score > b.score){return 1} else {return 0}
         })
 
-        controller.sendRoutesToView(result, directionsDisplay);
+        controller.sendRoutesToView(SafeRoute.RoutesModel.heatMapData, result, directionsDisplay);
       }
     })
   },

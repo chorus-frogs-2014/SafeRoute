@@ -5,7 +5,7 @@ SafeRoute.MapsController = {
     },
     fetch: function() {
         var self = SafeRoute.MapsController
-        event.preventDefault();
+        // event.preventDefault();
         var start = $(event.target).serializeArray()[0].value
         var end = $(event.target).serializeArray()[1].value
         self.model.request(self, start, end)
