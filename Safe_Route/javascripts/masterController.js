@@ -16,7 +16,6 @@ SafeRoute.MasterController = {
         this.UsersModel = UsersModel;
         this.UsersView = UsersView;
         this.MapsController.initialize(this.MapsModel, this.MapsView);
-        this.MapsModel.initialize(this.directionsService);
         this.CrimesController.initialize(this.CrimesModel);
         this.RoutesController.initialize(this.RoutesModel, this.RoutesView);
         this.RoutesModel.initialize(this.directionsService, this.directionsDisplay);
@@ -31,7 +30,7 @@ SafeRoute.MasterController = {
         this.CrimesController.request();
     },
     bindListeners: function() {
-        $('#locations').on('submit', this.MapsController.fetchCoords);
+        $('#locations').on('submit', this.MapsController.fetch);
     },
     collectMapData: function(mapsData) {
         this.mapsData = mapsData

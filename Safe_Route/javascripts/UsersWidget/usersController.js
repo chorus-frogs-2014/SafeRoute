@@ -12,5 +12,4 @@ SafeRoute.UsersController = {
     notify: function(){
       this.view.errror();
     }
-
 }

@@ -19,6 +19,6 @@ SafeRoute.UsersModel = {
             SafeRoute.UsersController.collect(results);
         } else {
             this.controller.notify();
+        }
     }
-  }
 }
