@@ -12,6 +12,10 @@ html, body {
     overflow: auto;
     z-index: 0;
 }
+.content-footer{
+  color: white;
+  text-align: center;
+}
 .background {
     position: absolute;
     z-index: -1;
