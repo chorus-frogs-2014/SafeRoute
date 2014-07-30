@@ -5,18 +5,17 @@ SafeRoute.MapsController = {
         this.model = model;
         this.view = view;
     },
-    collectCoords: function() {
+    fetchCoords: function() {
         var self = SafeRoute.MapsController
         event.preventDefault();
         var start = $(event.target).serializeArray()[0].value
         var end = $(event.target).serializeArray()[1].value
-        self.model.requestRoutes(self, start, end)
+        self.model.requestCoords(self, start, end)
     },
     fetchCurrentLocation: function(){
         this.model.getGeoLocation();
     },
     collectCurrentLocation: function(results){
-        console.log(this)
         this.view.renderCurrentLocation(results);
     }
 }

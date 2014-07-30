@@ -27,7 +27,7 @@ SafeRoute.MasterController = {
         this.CrimesController.request();
     },
     bindListeners: function() {
-        $('#locations').on('submit', this.MapsController.collectCoords);
+        $('#locations').on('submit', this.MapsController.fetchCoords);
     },
     collectMapData: function(mapsData) {
         this.mapsData = mapsData

@@ -2,10 +2,10 @@ SafeRoute.MapsModel = {
     initialize: function(directionsService) {
         this.directionsService = directionsService;
     },
-    requestRoutes: function(self, start, end) {
-        self.model.collect(start, end)
+    requestCoords: function(self, start, end) {
+        self.model.collectCoords(start, end)
     },
-    collect: function(start, end) {
+    collectCoords: function(start, end) {
         var mapsData = [start, end];
         SafeRoute.MasterController.collectMapData(mapsData);
     },
