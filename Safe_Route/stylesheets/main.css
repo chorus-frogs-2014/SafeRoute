@@ -1,77 +1,123 @@
-html {height: 100%}
-body {height: 100%}
-
-#legend{
-  bottom: 0;
-  right: 0;
-}
-
-#logo{
-  z-index: 1;
-  width: 15%;
-  text-align: center;
-  padding: auto;
-  position: fixed;
-  height: 4em;
-}
-
-h1{
+html, body {
   margin: 0;
-  font-family: "break the silence";
-  font-size: 3.5em;
-  color: gray;
-  padding-top: .1em;
-}
-
-#map-canvas {
-
+  padding: 0;
+  width: 100%;
   height: 100%;
-  width: 80%;
-  float: left;
-  position: relative
-}
-#forms{
-
-  z-index:100;
-  width: 20%;
-  height: 20%;
-  left: 0;
-  top: 5em;
-  position: fixed;
 }
 
-
-#locations{
+.content {
+  min-height: 100%;
+  position: relative;
+  overflow: auto;
+  z-index: 0;
 }
 
-#contact{
-  display: none;
-}
-
-#directionsPanel {
-  /*float:right;*/
-  bottom: 0;
-  right: 0;
-  width: 20%;
+.background {
   position: absolute;
-  height: 80%;
-  z-index:10;
-  background-color: white;
-  display: none;
-  opacity: .9;
-
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.adp-listsel{
-  background: none;
+.top_block {
+  width: 100%;
+  display: block;
 }
 
-.adp-fullwidth tbody tr:nth-child(2){
-  background-color: green;
+.bottom_block {
+  position: absolute;
+  width: 100%;
+  display: block;
+  bottom: 0;
 }
-.adp-fullwidth tbody tr:nth-child(3){
-  background-color: yellow;
+
+.left_block {
+  display: block;
+  float: left;
 }
-.adp-fullwidth tbody tr:nth-child(4){
-  background-color: red;
+
+.right_block {
+  display: block;
+  float: right;
+}
+
+.center_block {
+  display: block;
+  width: auto;
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: #333739!important;
+}
+
+.footer {
+  width: 100%;
+  height: 100px;
+  background-color: #333739!important;
+}
+
+#legend {
+    bottom: 0;
+    right: 0;
+}
+#logo {
+    z-index: 1;
+    width: 15%;
+    text-align: center;
+    padding: auto;
+    position: fixed;
+    height: 4em;
+}
+h1 {
+    margin: 0;
+    font-family: "break the silence";
+    font-size: 3.5em;
+    color: #2ECC71!important;
+}
+#map-canvas {
+    height: 70%;
+    width: 70%;
+    margin: auto;
+    position: relative
+}
+#forms {
+    z-index: 100;
+    width: 20%;
+    height: 20%;
+    left: 0;
+    top: 5em;
+    position: fixed;
+}
+#locations {}
+
+ #contact {
+    display: none;
+}
+#directionsPanel {
+    /*float:right;*/
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    position: absolute;
+    height: 80%;
+    z-index: 10;
+    background-color: white;
+    display: none;
+    opacity: .9;
+}
+.adp-listsel {
+    background: none;
+}
+.adp-fullwidth tbody tr:nth-child(2) {
+    background-color: green;
+}
+.adp-fullwidth tbody tr:nth-child(3) {
+    background-color: yellow;
+}
+.adp-fullwidth tbody tr:nth-child(4) {
+    background-color: red;
 }
