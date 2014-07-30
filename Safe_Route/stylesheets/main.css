@@ -1,0 +1,77 @@
+html {height: 100%}
+body {height: 100%}
+
+#legend{
+  bottom: 0;
+  right: 0;
+}
+
+#logo{
+  z-index: 1;
+  width: 15%;
+  text-align: center;
+  padding: auto;
+  position: fixed;
+  height: 4em;
+}
+
+h1{
+  margin: 0;
+  font-family: "break the silence";
+  font-size: 3.5em;
+  color: gray;
+  padding-top: .1em;
+}
+
+#map-canvas {
+
+  height: 100%;
+  width: 80%;
+  float: left;
+  position: relative
+}
+#forms{
+
+  z-index:100;
+  width: 20%;
+  height: 20%;
+  left: 0;
+  top: 5em;
+  position: fixed;
+}
+
+
+#locations{
+}
+
+#contact{
+  display: none;
+}
+
+#directionsPanel {
+  /*float:right;*/
+  bottom: 0;
+  right: 0;
+  width: 20%;
+  position: absolute;
+  height: 80%;
+  z-index:10;
+  background-color: white;
+  display: none;
+  opacity: .9;
+
+}
+
+.adp-listsel{
+  background: none;
+}
+
+.adp-fullwidth tbody tr:nth-child(2){
+  background-color: green;
+}
+.adp-fullwidth tbody tr:nth-child(3){
+  background-color: yellow;
+}
+.adp-fullwidth tbody tr:nth-child(4){
+  background-color: red;
+}
