@@ -31,11 +31,7 @@ SafeRoute.MasterController = {
     },
     bindListeners: function() {
         $('#locations').on('submit', function(event){
-            event.preventDefault();
-        $('#locations').hide();
-        $('#contact').show();
-        $('#directionsPanel').show();
-        SafeRoute.MapsController.fetch();
+        SafeRoute.MapsController.fetch(event);
     })
 },
 collectMapData: function(mapsData) {
