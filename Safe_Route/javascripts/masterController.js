@@ -25,17 +25,14 @@ SafeRoute.MasterController = {
     },
     run: function() {
         this.bindListeners();
+        this.MapsView.animate();
         this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
         this.UsersController.fetch();
         this.CrimesController.request();
     },
     bindListeners: function() {
         $('#locations').on('submit', function(event) {
-            event.preventDefault();
-            $('#locations').hide();
-            $('#contact').show();
-            $('#directionsPanel').show();
-            SafeRoute.MapsController.fetch();
+        SafeRoute.MapsController.fetch(event);
         })
     },
     collectMapData: function(mapsData) {

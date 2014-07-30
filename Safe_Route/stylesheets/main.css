@@ -13,22 +13,21 @@ html, body {
     overflow: auto;
     z-index: 0;
 }
-.please-wait{
-
-  width: 500px;
-  color: grey;
-  text-align: center;
-  font-size: 1.4em;
-  font-family: 'Open Sans Condensed', sans-serif;
+.pleaseWait {
+    width: 500px;
+    color: grey;
+    text-align: center;
+    font-size: 1.4em;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
-.slogan{
-  margin-top: 77px;
-  display: inline-table;
-  color: white;
-  text-align: right;
-  margin-left: 55px;
-  font-size: 1.2em;
-  font-family: 'Open Sans Condensed', sans-serif;
+.slogan {
+    margin-top: 77px;
+    display: inline-table;
+    color: white;
+    text-align: right;
+    margin-left: 55px;
+    font-size: 1.2em;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
 .background {
     position: absolute;
@@ -121,7 +120,10 @@ h3 {
     top: 5em;
     position: fixed;
 }
-#locations {} #contact {
+#locations {
+    display: none;
+}
+#contact {
     display: none;
 }
 #directionsPanel {

@@ -11,6 +11,11 @@ SafeRoute.MapsView = {
     collect: function(sanFranGoogleObj) {
         return new google.maps.Map(document.getElementById("map-canvas"), this.options(sanFranGoogleObj));
     },
+    animate: function(){
+        $('.bounceOutLeft').addClass('animated fadeInRightBig');
+        $('.pleaseWait').addClass('animated fadeIn');
+        $('.slogan').addClass('animated fadeIn');
+    },
     render: function(directionsDisplay, sanFranGoogleObj) {
         directionsDisplay.setMap(this.collect(sanFranGoogleObj));
     }
