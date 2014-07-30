@@ -11,3 +11,4 @@ SafeRoute.CrimesModel = {
     })
   }
 }
+

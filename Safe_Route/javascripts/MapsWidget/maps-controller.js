@@ -11,33 +11,12 @@ SafeRoute.MapsController = {
         var start = $(event.target).serializeArray()[0].value
         var end = $(event.target).serializeArray()[1].value
         self.model.requestRoutes(self, start, end)
-},
-getGeoLocation: function(locationObject, geoCoder) {
-    this.locationObject = locationObject;
-    this.geoCoder = geoCoder;
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(this.getPositonSuccess, this.showError);
-    } else {
-        showError();
+    },
+    fetchCurrentLocation: function(){
+        this.model.getGeoLocation();
+    },
+    collectCurrentLocation: function(results){
+        console.log(this)
+        this.view.renderCurrentLocation(results);
     }
-},
-getPositonSuccess: function(postition) {
-    var currentLatLng = this.locationObject(position.coords.latitude, position.coords.longitude);
-    this.geoCoder.geocode({
-        'latLng': currentLatLng
-    }, checkAddress)
-},
-checkAddress: function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-        showAddress(results);
-    } else {
-        showError();
-    }
-},
-showAddress: function(results) {
-    $('input').eq(0).val(results[0].formatted_address)
-},
-showError: function() {
-    alert("Sorry! Please enter your address again.")
-  }
 }
