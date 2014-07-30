@@ -30,20 +30,26 @@ SafeRoute.MasterController = {
         this.CrimesController.request();
     },
     bindListeners: function() {
-        $('#locations').on('submit', this.MapsController.fetch);
-    },
-    collectMapData: function(mapsData) {
-        this.mapsData = mapsData
-        if (this.crimesData != undefined) {
-            this.sendDataToRoutes();
-        } else {
-            alert("Just One Moment. Please Try Again")
-        }
-    },
-    collectCrimeData: function(crimesData) {
-        this.crimesData = crimesData
-    },
-    sendDataToRoutes: function() {
-        this.RoutesController.collectMapAndCrimeData(this.mapsData, this.crimesData)
+        $('#locations').on('submit', function(event){
+            event.preventDefault();
+        $('#locations').hide();
+        $('#contact').show();
+        $('#directionsPanel').show();
+        SafeRoute.MapsController.fetch();
+    })
+},
+collectMapData: function(mapsData) {
+    this.mapsData = mapsData
+    if (this.crimesData != undefined) {
+        this.sendDataToRoutes();
+    } else {
+        alert("Just One Moment. Please Try Again")
     }
+},
+collectCrimeData: function(crimesData) {
+    this.crimesData = crimesData
+},
+sendDataToRoutes: function() {
+    this.RoutesController.collectMapAndCrimeData(this.mapsData, this.crimesData)
+}
 }

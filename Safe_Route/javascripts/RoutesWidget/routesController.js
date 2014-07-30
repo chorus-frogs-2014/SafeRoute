@@ -6,7 +6,7 @@ SafeRoute.RoutesController = {
   collectMapAndCrimeData: function(mapsData, crimesData){
     this.model.parseData(this, mapsData, crimesData);
   },
-  sendRoutesToView: function(result, directionsDisplay){
-    this.view.render(result, directionsDisplay);
+  sendRoutesToView: function(heatMapData, result, directionsDisplay){
+    this.view.render(heatMapData, result, directionsDisplay);
   }
 }
