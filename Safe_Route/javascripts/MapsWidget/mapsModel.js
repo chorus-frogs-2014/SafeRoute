@@ -1,4 +1,5 @@
 SafeRoute.MapsModel = {
+
     request: function(self, start, end, event) {
         event.preventDefault();
         $('#locations').hide();
@@ -11,3 +12,4 @@ SafeRoute.MapsModel = {
         SafeRoute.MasterController.collectMapData(mapsData);
     }
 }
+

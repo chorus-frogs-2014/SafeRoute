@@ -26,11 +26,8 @@
     <script type="text/javascript" src="javascripts/UsersWidget/usersModel.js"></script>
     <script type="text/javascript" src="javascripts/UsersWidget/usersView.js"></script>
 </head>
-
 <body>
-
     <div class="content-header">
-
         <div class="top_block header">
             <div id="logo">
                 <h1 class="bounceOutLeft">SafeRoute</h1>
@@ -38,31 +35,34 @@
             </div>
         </div>
         <div class="content-middle">
-
         </div>
-
         <div class="bottom_block footer">
             <div class="content-footer">
                 <h3 class="pleaseWait">please wait while we gather the latest crime information</h3>
             </div>
         </div>
     </div>
+    <span id = "forms">
+      <form id="locations">
+        <input type="text" value = "1600 15th st sf" name="start" placeholder="start" />
+        <input type="text" value = "1489 webster st sf" name="end" placeholder="end" />
+        <input type="submit" />
+    </form>
+    <form id="contact">
+        <input type="text" value="austinbourdier@gmail.com" name="email"/>
+        <input type="text" value="5104575279" name="phone" />
 
+        <input type="submit" />
+    </form>
+</span>
     <div class="content-container">
-
         <div id="directionsPanel">
-
         </div>
-
         <span id="legend"></span>
         <div id="map-canvas" />
     </div>
-
-
     <footer>
-
     </footer>
-
 </body>
-
 </html>
+
