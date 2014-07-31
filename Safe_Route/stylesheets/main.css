@@ -18,7 +18,7 @@ html, body {
     color: gray;
     text-align: center;
     font-size: 1.4em;
-    font-family: 'Qwigley', sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
     display: none;
 }
 .slogan {
@@ -154,9 +154,13 @@ h3 {
 #forms input {} #contact {
     /*width: 350px;*/
 }
-#locations {} #loading {
-    font-family: 'Qwigley', sans-serif;
-    font-size: 2em;
+#locations {}
+
+#loading {
+    font-family: 'Open Sans Condensed', sans-serif;
+    top: 48px;
+    color: white;
+    font-size: 1.3em;
     z-index: 10000;
     position: fixed;
     margin: auto;
