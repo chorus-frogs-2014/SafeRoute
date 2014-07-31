@@ -26,15 +26,20 @@ SafeRoute.RoutesModel = {
       for (var d = 0; d < data.features.length; d++) {
         SafeRoute.RoutesModel.crimesSpots.push([data.features[d].geometry.coordinates])
       }
-      var googleroute1 = result.routes[0]
-      var googleroute2 = result.routes[1]
-      var googleroute3 = result.routes[2]
-      var googleRoute1Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute1)
-      var googleRoute2Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute2)
-      var googleRoute3Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute3)
-      SafeRoute.RoutesModel.allRoutes.push(googleRoute1Scored)
-      SafeRoute.RoutesModel.allRoutes.push(googleRoute2Scored)
-      SafeRoute.RoutesModel.allRoutes.push(googleRoute3Scored)
+      console.log(result)
+      for(newRoute = 0; newRoute < result.routes.length; newRoute++){
+        SafeRoute.RoutesModel.allRoutes.push(SafeRoute.RoutesModel.officialPathEvaluator(result.routes[newRoute]))
+      }
+      // var googleroute1 = result.routes[0]
+      // var googleroute2 = result.routes[1]
+      // var googleroute3 = result.routes[2]
+
+      // var googleRoute1Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute1)
+      // var googleRoute2Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute2)
+      // var googleRoute3Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute3)
+      // SafeRoute.RoutesModel.allRoutes.push(googleRoute1Scored)
+      // SafeRoute.RoutesModel.allRoutes.push(googleRoute2Scored)
+      // SafeRoute.RoutesModel.allRoutes.push(googleRoute3Scored)
       var waypointsArr = SafeRoute.RoutesModel.algorithm(result);
       SafeRoute.RoutesModel.callr(waypointsArr, controller, start, end, data)
     })
@@ -120,7 +125,7 @@ routesAlgorithm: function(controller, data, request, directionsService, directio
       var waypointRouteObjectOfficial = result.routes[0]
       var waypointRouteObjectOfficialScored = SafeRoute.RoutesModel.officialPathEvaluator(waypointRouteObjectOfficial)
       SafeRoute.RoutesModel.allRoutes.push(waypointRouteObjectOfficialScored);
-      $(document).trigger('change', [SafeRoute.RoutesModel.allRoutes])
+      $(document).trigger('rao_change', [SafeRoute.RoutesModel.allRoutes])
     }
   })
 },

@@ -141,23 +141,27 @@ h3 {
 }
 #locations, #contact {
     z-index: 10000;
-    position: fixed;
-    margin: auto;
-    text-align: center;
-    margin: 0;
+    /*text-align: center;*/
     padding: 0;
     clear: both;
-    position: fixed;
+    /*position: fixed;*/
     display: none;
-    float:left;
+
+
+}
+#locations.flex{
+    display: block;
+
+    /*width: 40em;*/
+        /*position: relative;*/
+
 }
 
 #forms input{
-    width: 100%;
 }
 
 #contact {
-
+/*width: 350px;*/
 }
 
 #locations {
@@ -181,7 +185,28 @@ h3 {
 }
 
 #forms{
-    top: 125px;
     position: absolute;
+    white-space: nowrap;
+    top: 70px;
+    left: 490px;
     z-index: 10000;
+}
+
+input[type=text] {
+       font-family: 'Open Sans Condensed', sans-serif;
+    border: 1px solid #fff;
+    background: black;
+    color: white;
+    line-height: 1;
+    padding: 5px;
+    font-size: 0.9em;
+}
+input[type=submit] {
+       font-family: 'Open Sans Condensed', sans-serif;
+    border: 1px solid #fff;
+    background: black;
+    color: white;
+    line-height: 1;
+    padding: 6px;
+    font-size: 0.9em;
 }

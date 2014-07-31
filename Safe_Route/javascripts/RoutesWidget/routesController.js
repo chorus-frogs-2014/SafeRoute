@@ -10,7 +10,7 @@ SafeRoute.RoutesController = {
     this.view.render(result, directionsDisplay, heatPoints);
   }
 }
-$(document).on('change', function(e, data) {
+$(document).on('rao_change', function(e, data) {
   if (data.length == 9) {
     var finalroutes = SafeRoute.RoutesModel.checkRoutes(data);
     SafeRoute.RoutesModel.EVERYTHING.routes = finalroutes
