@@ -4,5 +4,8 @@ SafeRoute.UsersView = {
     },
     failure: function() {
         alert("Sorry! I Couldn't find your current location.")
-    }
+    },
+    listen: function(controller){
+     $('#contact').on('submit', controller.collectEmail.bind(this))
+  }
 }
