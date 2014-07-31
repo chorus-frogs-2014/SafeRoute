@@ -18,7 +18,7 @@ html, body {
     color: gray;
     text-align: center;
     font-size: 1.4em;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-family: 'Qwigley', sans-serif;
     display: none;
 }
 .slogan {
@@ -115,15 +115,16 @@ h3 {
 }
 
 #directionsPanel {
-    bottom: 0;
+    top: 16%;
     right: 0;
     width: 20%;
     position: absolute;
-    height: 80%;
+    height: 67%;
     z-index: 10;
     background-color: white;
     display: none;
     opacity: .9;
+    overflow-y: scroll;
 }
 .adp-listsel {
     background: none;
@@ -165,6 +166,8 @@ h3 {
 }
 
 #loading{
+    font-family: 'Qwigley', sans-serif;
+    font-size: 2em;
     z-index: 10000;
     position: fixed;
     margin: auto;
