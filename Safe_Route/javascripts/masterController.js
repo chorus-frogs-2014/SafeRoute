@@ -31,17 +31,14 @@ SafeRoute.MasterController = {
         this.UsersView.listen(this.UsersController);
         this.CrimesController.request();
     },
-
     publish: function() {
         $(this.MapsView).on('collectCoords', function(e, mapsData) {
             console.log(mapsData);
             this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData)
         }.bind(this));
-
         $(this.CrimesModel).on('collectCrimes', function(e, crimesData) {
             console.log(crimesData)
             this.crimesData = crimesData;
         }.bind(this));
-
     }
-}
+}`

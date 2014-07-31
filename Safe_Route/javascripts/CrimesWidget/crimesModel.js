@@ -12,4 +12,3 @@ SafeRoute.CrimesModel = {
     }.bind(this))
   }
 }
-
