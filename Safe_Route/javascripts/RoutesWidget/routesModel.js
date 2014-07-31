@@ -2,7 +2,8 @@ SafeRoute.RoutesModel = {
   initialize: function(directionsService, directionsDisplay){
     this.directionsService = directionsService;
     this.directionsDisplay = directionsDisplay;
-    this.allRoutes = []
+    this.allRoutes = [];
+    this.globalCounter = 0;
   },
   parseData: function(controller, mapsData, crimesData){
     SafeRoute.RoutesModel.heatMapData = []
@@ -26,15 +27,18 @@ SafeRoute.RoutesModel = {
       for (var d = 0; d < data.features.length; d++) {
         SafeRoute.RoutesModel.crimesSpots.push([data.features[d].geometry.coordinates])
       }
-      var googleroute1 = result.routes[0]
-      var googleroute2 = result.routes[1]
-      var googleroute3 = result.routes[2]
-      var googleRoute1Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute1)
-      var googleRoute2Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute2)
-      var googleRoute3Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute3)
-      SafeRoute.RoutesModel.allRoutes.push(googleRoute1Scored)
-      SafeRoute.RoutesModel.allRoutes.push(googleRoute2Scored)
-      SafeRoute.RoutesModel.allRoutes.push(googleRoute3Scored)
+      for(var newRoute = 0; newRoute < result.routes.length; newRoute++){
+        SafeRoute.RoutesModel.allRoutes.push(SafeRoute.RoutesModel.officialPathEvaluator(result.routes[newRoute]))
+      }
+      // var googleroute1 = result.routes[0]
+      // var googleroute2 = result.routes[1]
+      // var googleroute3 = result.routes[2]
+      // var googleRoute1Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute1)
+      // var googleRoute2Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute2)
+      // var googleRoute3Scored = SafeRoute.RoutesModel.officialPathEvaluator(googleroute3)
+      // SafeRoute.RoutesModel.allRoutes.push(googleRoute1Scored)
+      // SafeRoute.RoutesModel.allRoutes.push(googleRoute2Scored)
+      // SafeRoute.RoutesModel.allRoutes.push(googleRoute3Scored)
       var waypointsArr = SafeRoute.RoutesModel.algorithm(result);
       SafeRoute.RoutesModel.callr(waypointsArr, controller, start, end, data)
     })
@@ -120,7 +124,8 @@ routesAlgorithm: function(controller, data, request, directionsService, directio
       var waypointRouteObjectOfficial = result.routes[0]
       var waypointRouteObjectOfficialScored = SafeRoute.RoutesModel.officialPathEvaluator(waypointRouteObjectOfficial)
       SafeRoute.RoutesModel.allRoutes.push(waypointRouteObjectOfficialScored);
-      $(document).trigger('change', [SafeRoute.RoutesModel.allRoutes])
+      SafeRoute.RoutesModel.globalCounter++
+      $(document).trigger('testChange', [SafeRoute.RoutesModel.allRoutes])
     }
   })
 },
