@@ -41,4 +41,4 @@ SafeRoute.MasterController = {
             this.crimesData = crimesData;
         }.bind(this));
     }
-}`
+}
