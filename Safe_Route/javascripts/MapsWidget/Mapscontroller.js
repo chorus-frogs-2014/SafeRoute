@@ -3,11 +3,11 @@ SafeRoute.MapsController = {
         this.model = model;
         this.view = view;
     },
-    fetch: function(event) {
-        console.log(event)
+    fetch: function() {
         var self = SafeRoute.MapsController
         var start = $(event.target).serializeArray()[0].value
         var end = $(event.target).serializeArray()[1].value
-        self.model.request(self, start, end, event)
+        console.log(this)
+        this.model.request(self, start, end, event)
     }
 }
