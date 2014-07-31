@@ -32,9 +32,12 @@ SafeRoute.MasterController = {
     },
     bindListeners: function() {
         $('#locations').on('submit', function(event){
+            alert('sup')
             SafeRoute.MapsController.fetch(event);
         })
-        $('#contact').on('submit', this.sendEmail.bind(this))
+        $('#contact').on('submit',
+            this.sendEmail.bind(this)
+        )
     },
     collectMapData: function(mapsData) {
         this.mapsData = mapsData
@@ -74,7 +77,6 @@ SafeRoute.MasterController = {
         return $(event.target).serializeArray()[0].value
     },
     fetchDirectionText: function(){
-        //htmlFormattedDirection = $('.adp')[0].innerText.replace(/(?:\r\n|\r|\n)/g, '<br />');
         return $('.adp')[0].innerText.split("\n");
     },
     formatDirectionText: function(directionText){
@@ -101,9 +103,11 @@ SafeRoute.MasterController = {
              type: 'POST',
              dataType: "json",
              data: emailData
-           }).done(function(data){
-             console.log('Emai was sent to ' + emailData.message.to[0].email
-        + '!')
+           }).success(function(data){
+             $('.sentEmail').fadeIn(2000, function(){
+                $(this).fadeOut(2000);
+                $('#contact').fadeOut(2000)
+             });
            })
     }
 }

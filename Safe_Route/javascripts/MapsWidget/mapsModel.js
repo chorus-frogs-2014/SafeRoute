@@ -2,8 +2,9 @@ SafeRoute.MapsModel = {
 
     request: function(self, start, end, event) {
         event.preventDefault();
-        $('#locations').hide();
+        $('#locations').fadeOut(2000, function(){
         $('#contact').show();
+        });
         $('#directionsPanel').show();
         self.model.collect(start, end)
     },

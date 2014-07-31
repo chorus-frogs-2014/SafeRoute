@@ -38,30 +38,33 @@
         </div>
         <div class="bottom_block footer">
             <div class="content-footer">
-                <h3 class="pleaseWait">please wait while we gather the latest crime information</h3>
+                <h3 class="sentEmail">Your directions have been sent to you!</h3>
             </div>
         </div>
     </div>
-    <span id = "forms">
+<div id = "loading">
+    <p>Loading!</p>
+</div>
+<div id = "forms">
       <form id="locations">
-        <input type="text" value = "1600 15th st sf" name="start" placeholder="start" />
-        <input type="text" value = "1489 webster st sf" name="end" placeholder="end" />
+        <input type="text" value = "1600 15th st sf" name="start" placeholder="start" /><br>
+        <input type="text" value = "1489 webster st sf" name="end" placeholder="end" /><br>
         <input type="submit" />
     </form>
     <form id="contact">
-        <input type="text" value="austinbourdier@gmail.com" name="email"/>
-        <input type="text" value="5104575279" name="phone" />
+        <input type="text" value="austinbourdier@gmail.com" name="email"/><br>
+<!--         <input type="text" value="5104575279" name="phone" /><br> -->
         <input type="submit" />
     </form>
-</span>
-    <div class="content-container">
-        <div id="directionsPanel">
-        </div>
-        <span id="legend"></span>
-        <div id="map-canvas" />
+</div>
+<div class="content-container">
+    <div id="directionsPanel">
     </div>
-    <footer>
-    </footer>
+    <span id="legend"></span>
+    <div id="map-canvas" />
+</div>
+<footer>
+</footer>
 </body>
 </html>
 

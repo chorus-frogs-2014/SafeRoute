@@ -7,6 +7,7 @@ SafeRoute.CrimesModel = {
       dataType: 'jsonp'
     }).done(function(data){
       $('#locations').show();
+      $('#loading').animate({ left: '-500%'}, 1000 );
       controller.collect(data)
     })
   }
