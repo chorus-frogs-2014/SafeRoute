@@ -29,7 +29,8 @@
     <div class="content-header">
         <div class="top_block header">
             <div id="logo">
-                <h1 class="bounceOutLeft">SafeRoute</h1>
+                <h1 class="bounceOutLeft"><a href="http://scottjason.github.io/saferoute">SafeRoute</a>
+                </h1>
                 <h4 class="slogan">arrive safely</h4>
             </div>
         </div>
@@ -38,36 +39,37 @@
         <div class="bottom_block footer">
         </div>
     </div>
-    <div id='loadingImage'>
-        <img src="images/loading_white.gif"/>
+    <div id="loadingImage">
+        <img src='/images/loading.gif' />
     </div>
-    <div id = "loading">
+    <div id="loading">
         <p>please wait while we gather the latest crime data.</p>
     </div>
     <div>
         <h3 class="sentEmail">Your directions have been sent to you!</h3>
     </div>
-    <div id = "forms">
-      <form id="locations" >
-        <input style="width: 16em;" type="text" name="start" />
-        <input  style="width: 16em;" type="text" name="end" />
-        <input type="submit" value="GO!"/>
-    </form>
-    <form id="contact">
-        <input type="text" name="email"/><br>
-        <input type="submit" value="SEND!"/>
+    <div id="forms">
+        <form id="locations">
+            <input style="width: 16em;" type="text" name="start" />
+            <input style="width: 16em;" type="text" name="end" />
+            <input type="submit" value="GO!" />
+        </form>
+        <form id="contact">
+            <input style="width: 16em;" type="text" name="email" placeholder="Email Me Directions!" />
+            <br>
+            <input type="submit" value="SEND!" />
 
-    </form>
-</div>
-<div class="content-container">
-    <div id="directionsPanel">
-
+        </form>
     </div>
-    <span id="legend"></span>
-    <div id="map-canvas" />
-</div>
-<footer>
-</footer>
+    <div class="content-container">
+        <div id="directionsPanel">
+
+        </div>
+        <span id="legend"></span>
+        <div id="map-canvas" />
+    </div>
+    <footer>
+    </footer>
 </body>
 
 </html>
