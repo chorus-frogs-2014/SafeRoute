@@ -1,5 +1,6 @@
 <h1><strong>Safe Route</strong></h1>
-<h4>Arrive Safely</h4>
+<h5>Safe Route finds you the safest route home</h5>
+<br>
 <p>Authored by:
   <a href = "https://github.com/austinbourdier">Austin Bourdier</a>,
   <a href = "https://github.com/smileyface525">Eiko Seino</a>,
