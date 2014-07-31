@@ -16,6 +16,12 @@ SafeRoute.MapsView = {
         $('.pleaseWait').addClass('animated fadeIn');
         $('.slogan').addClass('animated fadeIn');
     },
+    listen: function(controller){
+        $('#locations').on('submit', function(event){
+            controller.fetch(event);
+        })
+        // $('#contact').on('submit', this.sendEmail.bind(this))
+    },
     render: function(directionsDisplay, sanFranGoogleObj) {
         directionsDisplay.setMap(this.collect(sanFranGoogleObj));
     }

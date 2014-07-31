@@ -4,6 +4,7 @@ SafeRoute.MapsController = {
         this.view = view;
     },
     fetch: function(event) {
+        console.log(event)
         var self = SafeRoute.MapsController
         var start = $(event.target).serializeArray()[0].value
         var end = $(event.target).serializeArray()[1].value
