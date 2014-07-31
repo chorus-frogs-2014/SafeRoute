@@ -1,4 +1,5 @@
 <h1><strong>Safe Route</strong></h1>
+<hr>
 <h5>Safe Route finds you the safest route home</h5>
 <br>
 <p>Authored by:
