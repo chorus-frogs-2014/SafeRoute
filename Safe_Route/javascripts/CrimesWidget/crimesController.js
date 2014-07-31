@@ -4,10 +4,10 @@ SafeRoute.CrimesController = {
   },
   request: function(){
     this.model.requestCrimes(this)
-  },
-  collect: function(data){
-    crimesData = [];
-    crimesData.push(data);
-    $(document).trigger('collectCrimes', [crimesData[0]]);
   }
+  // collect: function(data){
+  //   crimesData = [];
+  //   crimesData.push(data);
+  // $(this).trigger('collectCrimes', [crimesData]).bind(this);
+  // }
 }

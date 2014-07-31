@@ -7,9 +7,7 @@ SafeRoute.UsersView = {
     },
     listen: function(controller){
      $('#contact').on('submit', controller.collectEmail.bind(this));
-  },
-
-
+  }
 }
 
 
