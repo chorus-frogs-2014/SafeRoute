@@ -8,6 +8,6 @@ SafeRoute.CrimesController = {
   collect: function(data){
     crimesData = [];
     crimesData.push(data);
-    SafeRoute.MasterController.collectCrimeData(crimesData[0])
+    $(document).trigger('collectCrimes', [crimesData[0]]);
   }
 }

@@ -8,7 +8,7 @@ SafeRoute.MapsModel = {
     },
     collect: function(start, end) {
         var mapsData = [start, end];
-        $(document).trigger('submitCoords', [mapsData])
+        $(document).trigger('collectCoords', [mapsData])
     }
   }
 

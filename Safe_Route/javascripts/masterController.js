@@ -24,7 +24,7 @@ SafeRoute.MasterController = {
         this.run();
     },
     run: function() {
-        this.collectMapData();
+        this.listen();
         this.MapsView.animate();
         this.MapsView.listen(this.MapsController);
         this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
@@ -32,72 +32,75 @@ SafeRoute.MasterController = {
         this.CrimesController.request();
     },
 
-    collectMapData: function() {
-        $(document).on('submitCoords', function(e, mapsData){
-        this.mapsData = mapsData
-        this.sendDataToRoutes();
-    }.bind(this))
-  },
-    collectCrimeData: function(crimesData) {
-        this.crimesData = crimesData
+    listen: function() {
+        $(document).on('collectCoords', function(e, mapsData) {
+            console.log(mapsData)
+            this.mapsData = mapsData
+            // this.sendData(mapsData);
+        }.bind(this));
+
+        $(document).on('collectCrimes', function(e, crimesData) {
+            console.log(crimesData)
+            this.crimesData = crimesData
+        }.bind(this));
     },
-    sendDataToRoutes: function() {
+    // collectCrimeData: function() {
+
+    // },
+    sendData: function() {
         this.RoutesController.collectMapAndCrimeData(this.mapsData, this.crimesData)
     },
-    prepareEmailData: function(){
+    prepareEmailData: function() {
         var email = this.fetchEmail();
         var directionHTML = this.formatDirectionText(this.fetchDirectionText());
         return {
-                  'key': "kw7GF1wkNIN7P2ZVseK9JQ",
-                  'message':{
-                  'html': directionHTML,
-                  'from_email': 'SafeRoute@SafeRoute.com',
-                  'to':[
-                  {
+            'key': "kw7GF1wkNIN7P2ZVseK9JQ",
+            'message': {
+                'html': directionHTML,
+                'from_email': 'SafeRoute@SafeRoute.com',
+                'to': [{
                     'email': email,
                     'name': 'SafeRoute',
                     'type': 'to'
-                  }
-                  ],
-                  'autotext':'true',
-                  'subject':'SafeRoute Directions!'
-                  }
+                }],
+                'autotext': 'true',
+                'subject': 'SafeRoute Directions!'
+            }
         }
     },
-    fetchEmail: function(){
+    fetchEmail: function() {
         return $(event.target).serializeArray()[0].value
     },
-    fetchDirectionText: function(){
+    fetchDirectionText: function() {
         //htmlFormattedDirection = $('.adp')[0].innerText.replace(/(?:\r\n|\r|\n)/g, '<br />');
         return $('.adp')[0].innerText.split("\n");
     },
-    formatDirectionText: function(directionText){
+    formatDirectionText: function(directionText) {
         directionText.pop()
         directionText.pop()
         directionText.shift()
         directionText[0] = 'Start:' + directionText[0]
         directionText[1] = 'Total Time:' + directionText[1]
-        directionText[directionText.length-1] = 'End:' + directionText[directionText.length-1]
+        directionText[directionText.length - 1] = 'End:' + directionText[directionText.length - 1]
         var directionHTML = '<b>Here is your direction. Arrive Safely!</b><br /><br />' + directionText.shift() + '<br /><br/>'
         directionHTML += directionText.shift() + '<br /><br/>'
-        for(var i = 0; i < directionText.length-1; i++){
-            directionHTML += directionText[i] + ' (' + directionText[i+1] + ')' + '<br/><br />'
+        for (var i = 0; i < directionText.length - 1; i++) {
+            directionHTML += directionText[i] + ' (' + directionText[i + 1] + ')' + '<br/><br />'
             i++
         }
         directionHTML += directionText.pop()
         return directionHTML
     },
-    sendEmail: function(event){
+    sendEmail: function(event) {
         event.preventDefault();
         var emailData = this.prepareEmailData();
         $.ajax({
-             url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-             type: 'POST',
-             dataType: "json",
-             data: emailData
-           }).done(function(data){
-             console.log('Emai was sent to ' + emailData.message.to[0].email
-        + '!')
-           })
+            url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+            type: 'POST',
+            dataType: "json",
+            data: emailData
+        }).done(function(data) {
+            console.log('Emai was sent to ' + emailData.message.to[0].email + '!')
+        })
     }
 }
