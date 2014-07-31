@@ -10,10 +10,10 @@ SafeRoute.RoutesController = {
     this.view.render(result, directionsDisplay, heatPoints);
   }
 }
-$(document).on('rao_change', function(e, data) {
-  if (data.length == 9) {
-    var finalroutes = SafeRoute.RoutesModel.checkRoutes(data);
-    SafeRoute.RoutesModel.EVERYTHING.routes = finalroutes
-    SafeRoute.RoutesView.render(SafeRoute.RoutesModel.heatMapData, SafeRoute.RoutesModel.EVERYTHING, SafeRoute.RoutesModel.directionsDisplay)
-  }
+$(document).on('testChange', function(e, data) {
+    if (SafeRoute.RoutesModel.globalCounter == 6) {
+      var finalroutes = SafeRoute.RoutesModel.checkRoutes(data);
+      SafeRoute.RoutesModel.EVERYTHING.routes = finalroutes
+      SafeRoute.RoutesView.render(SafeRoute.RoutesModel.heatMapData, SafeRoute.RoutesModel.EVERYTHING, SafeRoute.RoutesModel.directionsDisplay)
+    }
 })
