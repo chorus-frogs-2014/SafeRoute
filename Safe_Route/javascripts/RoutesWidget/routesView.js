@@ -1,14 +1,10 @@
 SafeRoute.RoutesView = {
-
   initialize: function(sanFranGoogleObj){
-
     this.sanFranGoogleObj = sanFranGoogleObj;
-
   },
   createMap: function(sanFranGoogleObj){
-
-    return new google.maps.Map(document.getElementById("map-canvas"), this.setMapOptions(sanFranGoogleObj));
-
+    this.map = new google.maps.Map(document.getElementById("map-canvas"), this.setMapOptions(sanFranGoogleObj));
+return this.map
   },
   setMapOptions: function(sanFranGoogleObj){
 
@@ -24,15 +20,18 @@ SafeRoute.RoutesView = {
     return mapOptions
   },
 
-  render:function(result, directionsDisplay){
-
-    console.log(result)
-
+  render:function(heatMapData, result, directionsDisplay){
     directionsDisplay.setMap(this.createMap(this.sanFranGoogleObj));
 
     directionsDisplay.setDirections(result);
-
+    // debugger
     directionsDisplay.setPanel(document.getElementById("directionsPanel"));
-
+    var heatmap = new google.maps.visualization.HeatmapLayer({
+      data: heatMapData,
+      radius: 100,
+      opacity: .5,
+      maxIntensity: .9
+    });
+    heatmap.setMap(this.map)
   }
 }

@@ -18,6 +18,6 @@ SafeRoute.RoutesController = {
 
 
       SafeRoute.RoutesModel.EVERYTHING.routes = finalroutes
-      SafeRoute.RoutesView.render(SafeRoute.RoutesModel.EVERYTHING, SafeRoute.RoutesModel.directionsDisplay)
+      SafeRoute.RoutesView.render(SafeRoute.RoutesModel.heatMapData, SafeRoute.RoutesModel.EVERYTHING, SafeRoute.RoutesModel.directionsDisplay)
       }
     })
