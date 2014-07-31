@@ -12,17 +12,16 @@ SafeRoute.UsersController = {
     notify: function(){
       SafeRoute.UsersView.failure();
     },
-
-    collectEmail: function(event) {
+    collectEmail: function() {
         event.preventDefault();
-        var emailData = this.prepareEmailData();
+        var emailData = this.model.prepareEmail();
         $.ajax({
             url: 'https://mandrillapp.com/api/1.0/messages/send.json',
             type: 'POST',
             dataType: "json",
             data: emailData
         }).done(function(data) {
-            console.log('Emai was sent to ' + emailData.message.to[0].email + '!')
+            alert('Emai was sent to ' + emailData.message.to[0].email + '!')
         })
     }
 }

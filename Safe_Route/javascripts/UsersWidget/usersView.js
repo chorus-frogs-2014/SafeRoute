@@ -7,5 +7,13 @@ SafeRoute.UsersView = {
     },
     listen: function(controller){
      $('#contact').on('submit', controller.collectEmail.bind(this))
-  }
+  },
+   collectEmail: function() {
+        return $(event.target).serializeArray()[0].value
+    },
+    collectDirections: function() {
+        return $('.adp')[0].innerText.split("\n");
+    }
 }
+
+

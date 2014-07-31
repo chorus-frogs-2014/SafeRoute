@@ -19,11 +19,11 @@ SafeRoute.UsersModel = {
             SafeRoute.UsersController.collectLocation(results);
         } else {
             this.controller.notify();
-        }
-    }
-    prepareEmailData: function() {
-        var email = this.fetchEmail();
-        var directionHTML = this.formatDirectionText(this.fetchDirectionText());
+      }
+    },
+    prepareEmail: function() {
+        var email = this.view.collectEmail();
+        var directionHTML = this.formatDirectionText(this.view.collectDirections());
         return {
             'key': "kw7GF1wkNIN7P2ZVseK9JQ",
             'message': {
@@ -35,16 +35,9 @@ SafeRoute.UsersModel = {
                     'type': 'to'
                 }],
                 'autotext': 'true',
-                'subject': 'SafeRoute Directions!'
+                'subject': 'Your SafeRoute Directions!'
             }
         }
-    },
-    fetchEmail: function() {
-        return $(event.target).serializeArray()[0].value
-    },
-    fetchDirectionText: function() {
-        //htmlFormattedDirection = $('.adp')[0].innerText.replace(/(?:\r\n|\r|\n)/g, '<br />');
-        return $('.adp')[0].innerText.split("\n");
     },
     formatDirectionText: function(directionText) {
         directionText.pop()
@@ -53,7 +46,7 @@ SafeRoute.UsersModel = {
         directionText[0] = 'Start:' + directionText[0]
         directionText[1] = 'Total Time:' + directionText[1]
         directionText[directionText.length - 1] = 'End:' + directionText[directionText.length - 1]
-        var directionHTML = '<b>Here is your direction. Arrive Safely!</b><br /><br />' + directionText.shift() + '<br /><br/>'
+        var directionHTML = '<b>Here are your SafeRoute directions. As always, arrive safely.</b><br /><br />' + directionText.shift() + '<br /><br/>'
         directionHTML += directionText.shift() + '<br /><br/>'
         for (var i = 0; i < directionText.length - 1; i++) {
             directionHTML += directionText[i] + ' (' + directionText[i + 1] + ')' + '<br/><br />'
@@ -61,8 +54,5 @@ SafeRoute.UsersModel = {
         }
         directionHTML += directionText.pop()
         return directionHTML
-    },
-
-
-
+  }
 }
