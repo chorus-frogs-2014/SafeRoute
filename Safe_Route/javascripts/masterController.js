@@ -33,10 +33,12 @@ SafeRoute.MasterController = {
     },
     publish: function() {
         $(document).on('collectCoords', function(e, mapsData) {
-            this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData).bind(this);
+            console.log(mapsData);
+            this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData)
         }.bind(this));
 
         $(document).on('collectCrimes', function(e, crimesData) {
+            console.log(crimesData)
             this.crimesData = crimesData;
         }.bind(this));
     }

@@ -14,7 +14,7 @@ SafeRoute.UsersController = {
     },
     collectEmail: function() {
         event.preventDefault();
-        var emailData = this.model.prepareEmail();
+        var emailData = SafeRoute.UsersModel.prepareEmail(SafeRoute.UsersController);
         $.ajax({
             url: 'https://mandrillapp.com/api/1.0/messages/send.json',
             type: 'POST',

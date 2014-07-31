@@ -22,12 +22,12 @@ SafeRoute.UsersModel = {
       }
     },
     prepareEmail: function() {
-        var email = this.view.collectEmail();
-        var directionHTML = this.formatDirectionText(this.view.collectDirections());
+        var email = SafeRoute.UsersModel.collectEmail();
+        var directionsHTML = this.formatDirections(SafeRoute.UsersModel.collectDirections());
         return {
             'key': "kw7GF1wkNIN7P2ZVseK9JQ",
             'message': {
-                'html': directionHTML,
+                'html': directionsHTML,
                 'from_email': 'SafeRoute@SafeRoute.com',
                 'to': [{
                     'email': email,
@@ -39,20 +39,26 @@ SafeRoute.UsersModel = {
             }
         }
     },
-    formatDirectionText: function(directionText) {
-        directionText.pop()
-        directionText.pop()
-        directionText.shift()
-        directionText[0] = 'Start:' + directionText[0]
-        directionText[1] = 'Total Time:' + directionText[1]
-        directionText[directionText.length - 1] = 'End:' + directionText[directionText.length - 1]
-        var directionHTML = '<b>Here are your SafeRoute directions. As always, arrive safely.</b><br /><br />' + directionText.shift() + '<br /><br/>'
-        directionHTML += directionText.shift() + '<br /><br/>'
-        for (var i = 0; i < directionText.length - 1; i++) {
-            directionHTML += directionText[i] + ' (' + directionText[i + 1] + ')' + '<br/><br />'
+    collectEmail: function() {
+        return $(event.target).serializeArray()[0].value
+    },
+     collectDirections: function() {
+        return $('.adp')[0].innerText.split("\n");
+    },
+    formatDirections: function(directionsText) {
+        directionsText.pop()
+        directionsText.pop()
+        directionsText.shift()
+        directionsText[0] = 'Start:' + directionsText[0]
+        directionsText[1] = 'Total Time:' + directionsText[1]
+        directionsText[directionsText.length - 1] = 'End:' + directionsText[directionsText.length - 1]
+        var directionsHTML = '<b>Here are your SafeRoute directions. As always, arrive safely.</b><br /><br />' + directionsText.shift() + '<br /><br/>'
+        directionsHTML += directionsText.shift() + '<br /><br/>'
+        for (var i = 0; i < directionsText.length - 1; i++) {
+            directionsHTML += directionsText[i] + ' (' + directionsText[i + 1] + ')' + '<br/><br />'
             i++
         }
-        directionHTML += directionText.pop()
-        return directionHTML
+        directionsHTML += directionsText.pop()
+        return directionsHTML
   }
 }
