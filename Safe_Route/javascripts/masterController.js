@@ -24,6 +24,7 @@ SafeRoute.MasterController = {
         this.run();
     },
     run: function() {
+        this.collectMapData();
         this.MapsView.animate();
         this.MapsView.listen(this.MapsController);
         this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
@@ -31,13 +32,16 @@ SafeRoute.MasterController = {
         this.CrimesController.request();
     },
 
-    collectMapData: function(mapsData) {
+    collectMapData: function() {
+        $(document).on('submitCoords', function(e, mapsData){
+            console.log(mapsData);
         this.mapsData = mapsData
         if (this.crimesData != undefined) {
             this.sendDataToRoutes();
         } else {
             alert("Just One Moment. Please Try Again")
         }
+      }.bind(this))
     },
     collectCrimeData: function(crimesData) {
         this.crimesData = crimesData

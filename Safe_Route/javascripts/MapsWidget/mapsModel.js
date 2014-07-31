@@ -4,10 +4,12 @@ SafeRoute.MapsModel = {
         $('#locations').hide();
         $('#contact').show();
         $('#directionsPanel').show();
-        this.model.collect(start, end)
+        this.collect(start, end)
     },
     collect: function(start, end) {
         var mapsData = [start, end];
-        SafeRoute.MasterController.collectMapData(mapsData);
+        $(document).trigger('submitCoords', [mapsData])
     }
-}
+  }
+
+        // SafeRoute.MasterController.collectMapData(mapsData);
