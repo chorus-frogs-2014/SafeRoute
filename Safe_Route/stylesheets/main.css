@@ -155,14 +155,21 @@ h3 {
     /*width: 350px;*/
 }
 #locations {}
-
+#loadingImage{
+    z-index: 2000;
+    top: 28%;
+    left: 39%;
+    position: absolute;
+    width: 70px;
+    height: 70px;
+}
 #loading {
     font-family: 'Open Sans Condensed', sans-serif;
     top: 48px;
     color: white;
     font-size: 1.3em;
     z-index: 10000;
-    position: fixed;
+    position: absolute;
     margin: auto;
     text-align: center;
     width: 100%;
