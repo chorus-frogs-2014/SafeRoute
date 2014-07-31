@@ -34,15 +34,10 @@ SafeRoute.MasterController = {
 
     collectMapData: function() {
         $(document).on('submitCoords', function(e, mapsData){
-            console.log(mapsData);
         this.mapsData = mapsData
-        if (this.crimesData != undefined) {
-            this.sendDataToRoutes();
-        } else {
-            alert("Just One Moment. Please Try Again")
-        }
-      }.bind(this))
-    },
+        this.sendDataToRoutes();
+    }.bind(this))
+  },
     collectCrimeData: function(crimesData) {
         this.crimesData = crimesData
     },
