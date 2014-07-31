@@ -6,7 +6,7 @@ SafeRoute.CrimesModel = {
       type: 'GET',
       dataType: 'jsonp'
     }).done(function(data){
-      $('#locations').show()
+      $('#locations').show();
       controller.collect(data)
     })
   }
