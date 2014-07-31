@@ -7,8 +7,9 @@ SafeRoute.CrimesModel = {
       dataType: 'jsonp'
     }).done(function(data){
       $('#locations').show();
-      controller.collect(data)
-    })
+        $(this).trigger('collectCrimes', [data])
+      // controller.collect(data)
+    }.bind(this))
   }
 }
 
