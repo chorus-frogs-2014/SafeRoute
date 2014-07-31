@@ -4,6 +4,7 @@ SafeRoute.RoutesModel = {
     this.directionsDisplay = directionsDisplay;
     this.allRoutes = []
   },
+
   parseData: function(controller, mapsData, crimesData){
     SafeRoute.RoutesModel.heatMapData = []
     for (var crime = 0; crime < crimesData.features.length; crime++){
@@ -13,6 +14,7 @@ SafeRoute.RoutesModel = {
     var end = mapsData[1];
     this.createRoutes(controller, start, end, crimesData);
   },
+
   createRoutes: function(controller, start, end, data) {
 
     var request = {
