@@ -31,24 +31,14 @@ SafeRoute.MasterController = {
         this.UsersController.fetch();
         this.CrimesController.request();
     },
-
     listen: function() {
         $(document).on('collectCoords', function(e, mapsData) {
-            console.log(mapsData)
-            this.mapsData = mapsData
-            // this.sendData(mapsData);
+            this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData).bind(this);
         }.bind(this));
 
         $(document).on('collectCrimes', function(e, crimesData) {
-            console.log(crimesData)
-            this.crimesData = crimesData
+            this.crimesData = crimesData;
         }.bind(this));
-    },
-    // collectCrimeData: function() {
-
-    // },
-    sendData: function() {
-        this.RoutesController.collectMapAndCrimeData(this.mapsData, this.crimesData)
     },
     prepareEmailData: function() {
         var email = this.fetchEmail();
