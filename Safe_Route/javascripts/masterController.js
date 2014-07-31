@@ -23,7 +23,7 @@ SafeRoute.MasterController = {
         this.run();
     },
     run: function() {
-        this.publish();
+        this.subscribe();
         this.MapsView.animate();
         this.MapsView.listen(this.MapsController);
         this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
@@ -31,7 +31,7 @@ SafeRoute.MasterController = {
         this.UsersView.listen(this.UsersController);
         this.CrimesController.request();
     },
-    publish: function() {
+    subscribe: function() {
         $(this.MapsView).on('collectCoords', function(e, mapsData) {
             console.log(mapsData);
             this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData)

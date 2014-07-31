@@ -13,7 +13,7 @@ SafeRoute.MapsView = {
         var mapsData = [start, end];
         event.preventDefault();
         $('#locations').hide();
-        $('#contact').show();
+        $('#contact').addClass('inlineContact');
         $('#directionsPanel').show();
         $(this).trigger('collectCoords', [mapsData]).bind(this);
     },
