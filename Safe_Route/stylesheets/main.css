@@ -1,77 +1,152 @@
-html {height: 100%}
-body {height: 100%}
-
-#legend{
-  bottom: 0;
-  right: 0;
+html, body {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #EFEFEF;
 }
-
-#logo{
-  z-index: 1;
-  width: 15%;
-  text-align: center;
-  padding: auto;
-  position: fixed;
-  height: 4em;
+.main-content {
+    min-height: 100%;
+    position: relative;
+    overflow: auto;
+    z-index: 0;
 }
-
-h1{
-  margin: 0;
-  font-family: "break the silence";
-  font-size: 3.5em;
-  color: gray;
-  padding-top: .1em;
+.pleaseWait {
+    width: 500px;
+    color: grey;
+    text-align: center;
+    font-size: 1.4em;
+    font-family: 'Open Sans Condensed', sans-serif;
 }
-
+.slogan {
+    margin-top: 77px;
+    display: inline-table;
+    color: white;
+    text-align: right;
+    margin-left: 55px;
+    font-size: 1.2em;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+.background {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+}
+.content-middle {} .top_block {
+    width: 100%;
+    display: block;
+    background-color: #333739!important;
+}
+.bottom_block {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    display: block;
+    bottom: 0;
+    background-color: #333739!important;
+}
+.left_block {
+    display: block;
+    float: left;
+}
+.right_block {
+    display: block;
+    float: right;
+}
+.center_block {
+    display: block;
+    width: auto;
+    background-color: green;
+}
+.header {
+    width: 100%;
+    height: 110px;
+}
+.footer {
+    width: 100%;
+    height: 100px;
+}
+#legend {
+    bottom: 0;
+    right: 0;
+}
+#logo {
+    display: inline-flex;
+    z-index: 1;
+    width: 15%;
+    text-align: center;
+    padding: auto;
+    position: relative;
+    height: 4em;
+}
+h1 {
+    display: inherit;
+    margin: 0;
+    padding-left: 15px;
+    padding-top: 5px;
+    font-family: 'Qwigley', cursive;
+    font-size: 5.0em;
+    color: #23af5b!important;
+}
+h3 {
+    display: inline-table;
+    padding-left: 85px;
+    padding-top: 8px;
+    font-family: 'Qwigley', cursive;
+    font-size: 2.0em;
+    color: #fff!important;
+}
 #map-canvas {
-
-  height: 100%;
-  width: 80%;
-  float: left;
-  position: relative
+    height: 90%;
+    width: 100%;
+    margin: auto;
+    position: relative
 }
-#forms{
-
-  z-index:100;
-  width: 20%;
-  height: 20%;
-  left: 0;
-  top: 5em;
-  position: fixed;
+.content-container {
+    margin-top: 14px;
+    width: 100%;
+    height: 77%;
 }
-
-
-#locations{
+#forms {
+    z-index: 100;
+    width: 20%;
+    height: 20%;
+    left: 0;
+    top: 5em;
+    position: fixed;
 }
-
-#contact{
-  display: none;
+#locations {
+    display: none;
 }
-
+#contact {
+    display: none;
+}
 #directionsPanel {
-  /*float:right;*/
-  bottom: 0;
-  right: 0;
-  width: 20%;
-  position: absolute;
-  height: 80%;
-  z-index:10;
-  background-color: white;
-  display: none;
-  opacity: .9;
-
+    /*float:right;*/
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    position: absolute;
+    height: 80%;
+    z-index: 10;
+    background-color: white;
+    display: none;
+    opacity: .9;
 }
-
-.adp-listsel{
-  background: none;
+.adp-listsel {
+    background: none;
 }
-
-.adp-fullwidth tbody tr:nth-child(2){
-  background-color: green;
+.adp-fullwidth tbody tr:nth-child(2) {
+    background-color: green;
 }
-.adp-fullwidth tbody tr:nth-child(3){
-  background-color: yellow;
+.adp-fullwidth tbody tr:nth-child(3) {
+    background-color: yellow;
 }
-.adp-fullwidth tbody tr:nth-child(4){
-  background-color: red;
+.adp-fullwidth tbody tr:nth-child(4) {
+    background-color: red;
 }
