@@ -7,8 +7,8 @@ SafeRoute.RoutesModel = {
 
   parseData: function(controller, mapsData, crimesData){
     for (var crime = 0; crime < crimesData.features.length; crime++){
-      
-      
+
+
       SafeRoute.RoutesModel.heatMapData.push({location: new google.maps.LatLng(crimesData.features[crime].geometry.coordinates[1], crimesData.features[crime].geometry.coordinates[0]), weight: Math.random()*100})
     }
     var start = mapsData[0];
@@ -45,7 +45,6 @@ SafeRoute.RoutesModel = {
   },
 
   closeCrimeFinder: function(lat, lon, crimeCoord){
-    debugger
     return Math.abs(lat - crimeCoord[1]) < .0005 && Math.abs(lon - crimeCoord[0]) < .0005
   },
 
@@ -86,7 +85,6 @@ SafeRoute.RoutesModel = {
   checkForLocalCrimes: function(absoluteCrimeScore, routes, path, crimeSpots, self, coord){
     for(var crime = 0; crime<crimeSpots.length; crime++) {
       if(self.closeCrimeFinder(routes[path][coord][0], routes[path][coord][1], crimeSpots[crime][0])){
-        debugger
         absoluteCrimeScore++
       }
     }
