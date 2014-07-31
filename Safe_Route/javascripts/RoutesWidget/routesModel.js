@@ -4,7 +4,6 @@ SafeRoute.RoutesModel = {
     this.directionsDisplay = directionsDisplay;
     this.allRoutes = []
   },
-
   parseData: function(controller, mapsData, crimesData){
     SafeRoute.RoutesModel.heatMapData = []
     for (var crime = 0; crime < crimesData.features.length; crime++){
@@ -14,9 +13,7 @@ SafeRoute.RoutesModel = {
     var end = mapsData[1];
     this.createRoutes(controller, start, end, crimesData);
   },
-
   createRoutes: function(controller, start, end, data) {
-
     var request = {
       origin:start,
       destination:end,
@@ -38,9 +35,7 @@ SafeRoute.RoutesModel = {
       SafeRoute.RoutesModel.allRoutes.push(googleRoute1Scored)
       SafeRoute.RoutesModel.allRoutes.push(googleRoute2Scored)
       SafeRoute.RoutesModel.allRoutes.push(googleRoute3Scored)
-
       var waypointsArr = SafeRoute.RoutesModel.algorithm(result);
-
       SafeRoute.RoutesModel.callr(waypointsArr, controller, start, end, data)
     })
 },
@@ -62,7 +57,6 @@ officialPathEvaluator: function(routeObject) {
   routeObject.score = scaledCrime
   return routeObject
 },
-
 checkRoutes: function(data) {
   var finalRouteObjectArray = []
   var safestScore = 0
@@ -77,7 +71,6 @@ checkRoutes: function(data) {
       safestRouteObject = data[i]
     }
   }
-
   finalRouteObjectArray.push(safestRouteObject)
   var highestScore = 0
   var dangerousRouteObject
@@ -91,7 +84,6 @@ checkRoutes: function(data) {
       dangerousRouteObject = data[i]
     }
   }
-
   finalRouteObjectArray.push(dangerousRouteObject)
   var shortestDistance = 0
   var shortestRouteObject
@@ -108,7 +100,6 @@ checkRoutes: function(data) {
   finalRouteObjectArray.push(shortestRouteObject)
   return finalRouteObjectArray
 },
-
 callr: function(waypointsArr,controller, start, end, data){
   for(var index = 0; index < waypointsArr.length; index++){
     var request = {
@@ -121,105 +112,98 @@ callr: function(waypointsArr,controller, start, end, data){
     }
     this.routesAlgorithm(controller, data, request, this.directionsService, this.directionsDisplay)
   }
-    // ******This is where we should have all 9 routes with score
-  },
-
-  routesAlgorithm: function(controller, data, request, directionsService, directionsDisplay){
-    var self = this
-    directionsService.route(request, function(result,status){
-      if (status == google.maps.DirectionsStatus.OK) {
-        //Here is where we extract the route object from the result, and then we will use the official alg
-        var waypointRouteObjectOfficial = result.routes[0]
-        var waypointRouteObjectOfficialScored = SafeRoute.RoutesModel.officialPathEvaluator(waypointRouteObjectOfficial)
-        SafeRoute.RoutesModel.allRoutes.push(waypointRouteObjectOfficialScored);
-        $(document).trigger('change', [SafeRoute.RoutesModel.allRoutes])
-      }
-    })
-  },
-
-  algorithm: function(result){
-    //Before all iterations of degree angles, we declare all essential ingredients
-
-    var bearings = [.75, .666, .583]
-    var waypoints = [];
-    var lat1 = result.routes[0].legs[0].start_location.k
-    var lon1 = result.routes[0].legs[0].start_location.B
-    var lat2 = result.routes[0].legs[0].end_location.k
-    var lon2 = result.routes[0].legs[0].end_location.B
-    var latte1 = toRad(lat1)
-    var latte2 = toRad(lat2)
-    var longe1 = toRad(lon1)
-    var longe2 = toRad(lon2)
-    var changelatte = toRad(lat2-lat1)
-    var changelonge = toRad(lon2-lon1)
-    var R = 6371;
-    function toRad(n) {
-     return n * Math.PI / 180;
-   };
-
-   function toDeg(n) {
-    return n * 180 / Math.PI;
-  };
-
-  function getDistanceFromLatLonInKm(latte1,longe1,latte2,longe2) {
-    var dLat = latte2 - latte1;
-    var dLon = longe2 - longe1;
-    var a =
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(latte1) * Math.cos(latte2) *
-    Math.sin(dLon/2) * Math.sin(dLon/2);
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    var d = R * c;
-    return d;
-  }
-  var distanceR = getDistanceFromLatLonInKm(latte1,longe1,latte2,longe2);
-  function originalBearing(changelonge, latte1, latte2) {
-    var y = Math.sin(changelonge) * Math.cos(latte2);
-    var x = Math.cos(latte1)*Math.sin(latte2) - Math.sin(latte1)*Math.cos(latte2)*Math.cos(changelonge);
-    var brng = (Math.atan2(y, x)) * (180/Math.PI);
-    return brng
-  }
-  var brng = originalBearing(changelonge, latte1, latte2)
-  for (var counter = 0; counter < bearings.length; counter++){
-    var legdistance = distanceR * bearings[counter]
-    var adjacent = distanceR / 2
-    var oposite = Math.sqrt((Math.pow(legdistance, 2)) - (Math.pow(distanceR, 2)/4))
-    var tangentd = toDeg(Math.atan(oposite/adjacent))
-    function waypointbearingfinder(brng, tangentd) {
-      if (brng > 0 && brng + tangentd > 180 ) {
-        var total = tangentd + brng
-        var overflow = total - 180
-        var brngplus = -180 + overflow
-        var brngminus = brng - tangentd
-        return [brngplus, brngminus]
-      }
-      else if (brng < 0 && brng - tangentd < -180) {
-        var total = brng - tangentd
-        var overflow = Math.abs(180 + total)
-        var brngminus = 180 - overflow
-        var brngplus = brngplus + tangentd
-        return [brngplus, brngminus]
-      }
-      else {
-        var brngplus = brng + tangentd
-        var brngminus = brng - tangentd
-        return [brngplus, brngminus]
-      }
+},
+routesAlgorithm: function(controller, data, request, directionsService, directionsDisplay){
+  var self = this
+  directionsService.route(request, function(result,status){
+    if (status == google.maps.DirectionsStatus.OK) {
+      var waypointRouteObjectOfficial = result.routes[0]
+      var waypointRouteObjectOfficialScored = SafeRoute.RoutesModel.officialPathEvaluator(waypointRouteObjectOfficial)
+      SafeRoute.RoutesModel.allRoutes.push(waypointRouteObjectOfficialScored);
+      $(document).trigger('change', [SafeRoute.RoutesModel.allRoutes])
     }
-    var waypointBearings = waypointbearingfinder(brng, tangentd);
-    function Waypoints(d, brng, latte1, longe1) {
-      var waypointArray = []
-      for (var i=0; i < brng.length; i++) {
-        var latte2 = Math.asin( Math.sin(latte1)*Math.cos(d/R) + Math.cos(latte1)*Math.sin(d/R)*Math.cos(brng[i]) );
-        var longe2 = longe1 + Math.atan2(Math.sin(brng[i])*Math.sin(d/R)*Math.cos(latte1),Math.cos(d/R)-Math.sin(latte1)*Math.sin(latte2));
-        waypointArray.push([toDeg(latte2), toDeg(longe2)])
-      }
-      return waypointArray
+  })
+},
+
+algorithm: function(result){
+  var bearings = [.75, .666, .583]
+  var waypoints = [];
+  var lat1 = result.routes[0].legs[0].start_location.k
+  var lon1 = result.routes[0].legs[0].start_location.B
+  var lat2 = result.routes[0].legs[0].end_location.k
+  var lon2 = result.routes[0].legs[0].end_location.B
+  var latte1 = toRad(lat1)
+  var latte2 = toRad(lat2)
+  var longe1 = toRad(lon1)
+  var longe2 = toRad(lon2)
+  var changelatte = toRad(lat2-lat1)
+  var changelonge = toRad(lon2-lon1)
+  var R = 6371;
+  function toRad(n) {
+   return n * Math.PI / 180;
+ };
+ function toDeg(n) {
+  return n * 180 / Math.PI;
+};
+function getDistanceFromLatLonInKm(latte1,longe1,latte2,longe2) {
+  var dLat = latte2 - latte1;
+  var dLon = longe2 - longe1;
+  var a =
+  Math.sin(dLat/2) * Math.sin(dLat/2) +
+  Math.cos(latte1) * Math.cos(latte2) *
+  Math.sin(dLon/2) * Math.sin(dLon/2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  var d = R * c;
+  return d;
+}
+var distanceR = getDistanceFromLatLonInKm(latte1,longe1,latte2,longe2);
+function originalBearing(changelonge, latte1, latte2) {
+  var y = Math.sin(changelonge) * Math.cos(latte2);
+  var x = Math.cos(latte1)*Math.sin(latte2) - Math.sin(latte1)*Math.cos(latte2)*Math.cos(changelonge);
+  var brng = (Math.atan2(y, x)) * (180/Math.PI);
+  return brng
+}
+var brng = originalBearing(changelonge, latte1, latte2)
+for (var counter = 0; counter < bearings.length; counter++){
+  var legdistance = distanceR * bearings[counter]
+  var adjacent = distanceR / 2
+  var oposite = Math.sqrt((Math.pow(legdistance, 2)) - (Math.pow(distanceR, 2)/4))
+  var tangentd = toDeg(Math.atan(oposite/adjacent))
+  function waypointbearingfinder(brng, tangentd) {
+    if (brng > 0 && brng + tangentd > 180 ) {
+      var total = tangentd + brng
+      var overflow = total - 180
+      var brngplus = -180 + overflow
+      var brngminus = brng - tangentd
+      return [brngplus, brngminus]
     }
-    var bearingarray = [toRad(waypointBearings[0]),toRad(waypointBearings[1])]
-    waypoint = Waypoints(legdistance, bearingarray, latte1, longe1)
-    waypoints.push(waypoint[0], waypoint[1])
+    else if (brng < 0 && brng - tangentd < -180) {
+      var total = brng - tangentd
+      var overflow = Math.abs(180 + total)
+      var brngminus = 180 - overflow
+      var brngplus = brngplus + tangentd
+      return [brngplus, brngminus]
+    }
+    else {
+      var brngplus = brng + tangentd
+      var brngminus = brng - tangentd
+      return [brngplus, brngminus]
+    }
   }
-  return waypoints
+  var waypointBearings = waypointbearingfinder(brng, tangentd);
+  function Waypoints(d, brng, latte1, longe1) {
+    var waypointArray = []
+    for (var i=0; i < brng.length; i++) {
+      var latte2 = Math.asin( Math.sin(latte1)*Math.cos(d/R) + Math.cos(latte1)*Math.sin(d/R)*Math.cos(brng[i]) );
+      var longe2 = longe1 + Math.atan2(Math.sin(brng[i])*Math.sin(d/R)*Math.cos(latte1),Math.cos(d/R)-Math.sin(latte1)*Math.sin(latte2));
+      waypointArray.push([toDeg(latte2), toDeg(longe2)])
+    }
+    return waypointArray
+  }
+  var bearingarray = [toRad(waypointBearings[0]),toRad(waypointBearings[1])]
+  waypoint = Waypoints(legdistance, bearingarray, latte1, longe1)
+  waypoints.push(waypoint[0], waypoint[1])
+}
+return waypoints
 }
 }

@@ -7,7 +7,6 @@ SafeRoute.RoutesView = {
   return this.map
   },
   setMapOptions: function(sanFranGoogleObj){
-
     var mapOptions = {
       zoom:13,
       center: sanFranGoogleObj,
@@ -15,13 +14,10 @@ SafeRoute.RoutesView = {
       streetViewControl: false,
       disableDefaultUI: true
     }
-
     return mapOptions
   },
-
   render:function(heatMapData, result, directionsDisplay){
     directionsDisplay.setMap(this.createMap(this.sanFranGoogleObj));
-
     directionsDisplay.setDirections(result);
     directionsDisplay.setPanel(document.getElementById("directionsPanel"));
     var heatmap = new google.maps.visualization.HeatmapLayer({
