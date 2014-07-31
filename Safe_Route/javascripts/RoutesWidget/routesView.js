@@ -4,7 +4,7 @@ SafeRoute.RoutesView = {
   },
   createMap: function(sanFranGoogleObj){
     this.map = new google.maps.Map(document.getElementById("map-canvas"), this.setMapOptions(sanFranGoogleObj));
-return this.map
+  return this.map
   },
   setMapOptions: function(sanFranGoogleObj){
 

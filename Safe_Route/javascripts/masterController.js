@@ -1,11 +1,10 @@
 var SafeRoute = SafeRoute || {}
 SafeRoute.MasterController = {
-    initialize: function(MapsController, MapsModel, MapsView, CrimesController, CrimesModel, RoutesController, RoutesModel, RoutesView, UsersController, UsersModel, UsersView) {
+    initialize: function(MapsController, MapsView, CrimesController, CrimesModel, RoutesController, RoutesModel, RoutesView, UsersController, UsersModel, UsersView) {
         this.sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
         this.directionsDisplay = new google.maps.DirectionsRenderer();
         this.directionsService = new google.maps.DirectionsService();
         this.MapsController = MapsController;
-        this.MapsModel = MapsModel;
         this.MapsView = MapsView;
         this.CrimesController = CrimesController;
         this.CrimesModel = CrimesModel;
@@ -15,7 +14,7 @@ SafeRoute.MasterController = {
         this.UsersController = UsersController;
         this.UsersModel = UsersModel;
         this.UsersView = UsersView;
-        this.MapsController.initialize(this.MapsModel, this.MapsView);
+        this.MapsController.initialize(this.MapsView);
         this.CrimesController.initialize(this.CrimesModel);
         this.RoutesController.initialize(this.RoutesModel, this.RoutesView);
         this.RoutesModel.initialize(this.directionsService, this.directionsDisplay);
@@ -24,90 +23,25 @@ SafeRoute.MasterController = {
         this.run();
     },
     run: function() {
-        this.bindListeners();
+        this.publish();
         this.MapsView.animate();
+        this.MapsView.listen(this.MapsController);
         this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
         this.UsersController.fetch();
+        this.UsersView.listen(this.UsersController);
         this.CrimesController.request();
     },
-    bindListeners: function() {
-        $('#locations').on('submit', function(event){
-            alert('sup')
-            SafeRoute.MapsController.fetch(event);
-        })
-        $('#contact').on('submit',
-            this.sendEmail.bind(this)
-        )
-    },
-    collectMapData: function(mapsData) {
-        this.mapsData = mapsData
-        if (this.crimesData != undefined) {
-            this.sendDataToRoutes();
-        } else {
-            alert("Just One Moment. Please Try Again")
-        }
-    },
-    collectCrimeData: function(crimesData) {
-        this.crimesData = crimesData
-    },
-    sendDataToRoutes: function() {
-        this.RoutesController.collectMapAndCrimeData(this.mapsData, this.crimesData)
-    },
-    prepareEmailData: function(){
-        var email = this.fetchEmail();
-        var directionHTML = this.formatDirectionText(this.fetchDirectionText());
-        return {
-                  'key': "kw7GF1wkNIN7P2ZVseK9JQ",
-                  'message':{
-                  'html': directionHTML,
-                  'from_email': 'SafeRoute@SafeRoute.com',
-                  'to':[
-                  {
-                    'email': email,
-                    'name': 'SafeRoute',
-                    'type': 'to'
-                  }
-                  ],
-                  'autotext':'true',
-                  'subject':'SafeRoute Directions!'
-                  }
-        }
-    },
-    fetchEmail: function(){
-        return $(event.target).serializeArray()[0].value
-    },
-    fetchDirectionText: function(){
-        return $('.adp')[0].innerText.split("\n");
-    },
-    formatDirectionText: function(directionText){
-        directionText.pop()
-        directionText.pop()
-        directionText.shift()
-        directionText[0] = 'Start:' + directionText[0]
-        directionText[1] = 'Total Time:' + directionText[1]
-        directionText[directionText.length-1] = 'End:' + directionText[directionText.length-1]
-        var directionHTML = '<b>Here is your direction. Arrive Safely!</b><br /><br />' + directionText.shift() + '<br /><br/>'
-        directionHTML += directionText.shift() + '<br /><br/>'
-        for(var i = 0; i < directionText.length-1; i++){
-            directionHTML += directionText[i] + ' (' + directionText[i+1] + ')' + '<br/><br />'
-            i++
-        }
-        directionHTML += directionText.pop()
-        return directionHTML
-    },
-    sendEmail: function(event){
-        event.preventDefault();
-        var emailData = this.prepareEmailData();
-        $.ajax({
-             url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-             type: 'POST',
-             dataType: "json",
-             data: emailData
-           }).success(function(data){
-             $('.sentEmail').fadeIn(2000, function(){
-                $(this).fadeOut(2000);
-                $('#contact').fadeOut(2000)
-             });
-           })
+
+    publish: function() {
+        $(this.MapsView).on('collectCoords', function(e, mapsData) {
+            console.log(mapsData);
+            this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData)
+        }.bind(this));
+
+        $(this.CrimesModel).on('collectCrimes', function(e, crimesData) {
+            console.log(crimesData)
+            this.crimesData = crimesData;
+        }.bind(this));
+
     }
 }

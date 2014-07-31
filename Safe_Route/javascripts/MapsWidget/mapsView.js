@@ -1,5 +1,5 @@
 SafeRoute.MapsView = {
-    options: function(sanFranGoogleObj) {
+    set: function(sanFranGoogleObj) {
         var mapOptions = {
             zoom: 15,
             center: sanFranGoogleObj,
@@ -9,13 +9,26 @@ SafeRoute.MapsView = {
         }
         return mapOptions
     },
+    reveal: function(controller, start, end, event) {
+        var mapsData = [start, end];
+        event.preventDefault();
+        $('#locations').hide();
+        $('#contact').show();
+        $('#directionsPanel').show();
+        $(this).trigger('collectCoords', [mapsData]).bind(this);
+    },
     collect: function(sanFranGoogleObj) {
-        return new google.maps.Map(document.getElementById("map-canvas"), this.options(sanFranGoogleObj));
+        return new google.maps.Map(document.getElementById("map-canvas"), this.set(sanFranGoogleObj));
     },
     animate: function(){
         $('.bounceOutLeft').addClass('animated fadeInRightBig');
         $('.pleaseWait').addClass('animated fadeIn');
         $('.slogan').addClass('animated fadeIn');
+    },
+    listen: function(controller){
+        $('#locations').on('submit', function(event){
+            controller.fetch(event);
+        })
     },
     render: function(directionsDisplay, sanFranGoogleObj) {
         directionsDisplay.setMap(this.collect(sanFranGoogleObj));

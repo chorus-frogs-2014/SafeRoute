@@ -22,13 +22,14 @@ html, body {
     display: none;
 }
 .slogan {
-    margin-top: 77px;
+    top: 55px;
     display: inline-table;
     color: white;
     text-align: right;
-    margin-left: 55px;
+    left: 155px;
     font-size: 1.2em;
     font-family: 'Open Sans Condensed', sans-serif;
+    position: fixed;
 }
 .background {
     position: absolute;
@@ -143,8 +144,6 @@ h3 {
     position: fixed;
     margin: auto;
     text-align: center;
-    width: 20%;
-    top: 50%;
     margin: 0;
     padding: 0;
     clear: both;
@@ -173,7 +172,12 @@ h3 {
     margin: auto;
     text-align: center;
     width: 100%;
-    top: 50%;
     float:left;
     clear: both;
+}
+
+#forms{
+    top: 125px;
+    position: absolute;
+    z-index: 10000;
 }
