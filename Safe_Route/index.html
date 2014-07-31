@@ -3,13 +3,15 @@
 
 <head>
     <title>SafeRoute</title>
-    <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
-    <script type="text/javascript"
-  src="http://maps.googleapis.com/maps/api/js?libraries=visualization"></script>
+    <link href='http://fonts.googleapis.com/css?family=Qwigley' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=visualization"></script>
     <link rel="stylesheet" type="text/css" href="stylesheets/main.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/dynamic.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/animate.css">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/jQuery/lettering.js"></script>
     <script type="text/javascript" src="javascripts/init.js"></script>
     <script type="text/javascript" src="javascripts/masterController.js"></script>
     <script type="text/javascript" src="javascripts/CrimesWidget/crimesController.js"></script>
@@ -26,48 +28,41 @@
 </head>
 
 <body>
-    <div id = "logo">
-        <h1>SafeRoute</h1>
-    </div>
-    <span id = "forms">
-      <form id="locations">
-        <input type="text" value = "1600 15th st sf" name="start" placeholder="start" />
-        <input type="text" value = "1489 webster st sf" name="end" placeholder="end" />
-        <input type="submit" />
-    </form>
-    <form id="contact">
-        <input type="text" value="austinbourdier@gmail.com" name="email"/>
-        <input type="text" value="5104575279" name="phone" />
 
-        <input type="submit" />
-    </form>
-</span>
-<div id="directionsPanel">
+    <div class="content-header">
 
-</div>
-
-<span id = "legend">sup</span>
-<div id="map-canvas" />
-        <div id="fg-wrapper">
-            <div id="fountainG">
-                <div id="fountainG_1" class="fountainG">
-                </div>
-                <div id="fountainG_2" class="fountainG">
-                </div>
-                <div id="fountainG_3" class="fountainG">
-                </div>
-                <div id="fountainG_4" class="fountainG">
-                </div>
-                <div id="fountainG_5" class="fountainG">
-                </div>
-                <div id="fountainG_6" class="fountainG">
-                </div>
-                <div id="fountainG_7" class="fountainG">
-                </div>
-                <div id="fountainG_8" class="fountainG">
-                </div>
+        <div class="top_block header">
+            <div id="logo">
+                <h1 class="bounceOutLeft">SafeRoute</h1>
+                <h4 class="slogan">arrive safely</h4>
             </div>
         </div>
+        <div class="content-middle">
+
+        </div>
+
+        <div class="bottom_block footer">
+            <div class="content-footer">
+                <h3 class="pleaseWait">please wait while we gather the latest crime information</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container">
+
+        <div id="directionsPanel">
+
+        </div>
+
+        <span id="legend"></span>
+        <div id="map-canvas" />
+    </div>
+
+
+    <footer>
+
+    </footer>
+
 </body>
 
 </html>

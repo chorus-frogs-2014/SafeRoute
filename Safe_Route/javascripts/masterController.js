@@ -25,27 +25,28 @@ SafeRoute.MasterController = {
     },
     run: function() {
         this.bindListeners();
+        this.MapsView.animate();
         this.MapsView.render(this.directionsDisplay, this.sanFranGoogleObj);
         this.UsersController.fetch();
         this.CrimesController.request();
     },
     bindListeners: function() {
-        $('#locations').on('submit', function(event){
+        $('#locations').on('submit', function(event) {
         SafeRoute.MapsController.fetch(event);
-    })
-},
-collectMapData: function(mapsData) {
-    this.mapsData = mapsData
-    if (this.crimesData != undefined) {
-        this.sendDataToRoutes();
-    } else {
-        alert("Just One Moment. Please Try Again")
+        })
+    },
+    collectMapData: function(mapsData) {
+        this.mapsData = mapsData
+        if (this.crimesData != undefined) {
+            this.sendDataToRoutes();
+        } else {
+            alert("Just One Moment. Please Try Again")
+        }
+    },
+    collectCrimeData: function(crimesData) {
+        this.crimesData = crimesData
+    },
+    sendDataToRoutes: function() {
+        this.RoutesController.collectMapAndCrimeData(this.mapsData, this.crimesData)
     }
-},
-collectCrimeData: function(crimesData) {
-    this.crimesData = crimesData
-},
-sendDataToRoutes: function() {
-    this.RoutesController.collectMapAndCrimeData(this.mapsData, this.crimesData)
-}
 }
