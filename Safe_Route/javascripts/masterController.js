@@ -32,7 +32,7 @@ SafeRoute.MasterController = {
         this.CrimesController.request();
     },
     publish: function() {
-        $(document).on('collectCoords', function(e, mapsData) {
+        $(this.MapsView).on('collectCoords', function(e, mapsData) {
             console.log(mapsData);
             this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData)
         }.bind(this));

@@ -14,7 +14,7 @@ SafeRoute.MapsView = {
         $('#locations').hide();
         $('#contact').show();
         $('#directionsPanel').show();
-        $(document).trigger('collectCoords', [mapsData]);
+        $(this).trigger('collectCoords', [mapsData]).bind(this);
     },
     collect: function(sanFranGoogleObj) {
         return new google.maps.Map(document.getElementById("map-canvas"), this.set(sanFranGoogleObj));
@@ -28,7 +28,6 @@ SafeRoute.MapsView = {
         $('#locations').on('submit', function(event){
             controller.fetch(event);
         })
-        // $('#contact').on('submit', this.sendEmail.bind(this))
     },
     render: function(directionsDisplay, sanFranGoogleObj) {
         directionsDisplay.setMap(this.collect(sanFranGoogleObj));
