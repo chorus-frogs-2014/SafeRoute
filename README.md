@@ -1,4 +1,4 @@
-<h1>Safe Route</h1>
+<h1><strong>Safe Route</strong></h1>
 <h4>Arrive Safely</h4>
 <p>Authored by:
   <a href = "https://github.com/austinbourdier">Austin Bourdier</a>,
