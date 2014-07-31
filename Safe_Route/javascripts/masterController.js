@@ -1,11 +1,10 @@
 var SafeRoute = SafeRoute || {}
 SafeRoute.MasterController = {
-    initialize: function(MapsController, MapsModel, MapsView, CrimesController, CrimesModel, RoutesController, RoutesModel, RoutesView, UsersController, UsersModel, UsersView) {
+    initialize: function(MapsController, MapsView, CrimesController, CrimesModel, RoutesController, RoutesModel, RoutesView, UsersController, UsersModel, UsersView) {
         this.sanFranGoogleObj = new google.maps.LatLng(37.7583, -122.4367);
         this.directionsDisplay = new google.maps.DirectionsRenderer();
         this.directionsService = new google.maps.DirectionsService();
         this.MapsController = MapsController;
-        this.MapsModel = MapsModel;
         this.MapsView = MapsView;
         this.CrimesController = CrimesController;
         this.CrimesModel = CrimesModel;
@@ -15,7 +14,7 @@ SafeRoute.MasterController = {
         this.UsersController = UsersController;
         this.UsersModel = UsersModel;
         this.UsersView = UsersView;
-        this.MapsController.initialize(this.MapsModel, this.MapsView);
+        this.MapsController.initialize(this.MapsView);
         this.CrimesController.initialize(this.CrimesModel);
         this.RoutesController.initialize(this.RoutesModel, this.RoutesView);
         this.RoutesModel.initialize(this.directionsService, this.directionsDisplay);
@@ -31,6 +30,7 @@ SafeRoute.MasterController = {
         this.UsersController.fetch();
         this.CrimesController.request();
     },
+
     listen: function() {
         $(document).on('collectCoords', function(e, mapsData) {
             this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData).bind(this);
@@ -40,6 +40,7 @@ SafeRoute.MasterController = {
             this.crimesData = crimesData;
         }.bind(this));
     },
+
     prepareEmailData: function() {
         var email = this.fetchEmail();
         var directionHTML = this.formatDirectionText(this.fetchDirectionText());
