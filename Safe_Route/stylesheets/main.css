@@ -14,24 +14,29 @@ html, body {
     z-index: 0;
 }
 #emailDiv {
-    color: gray;
     z-index: 1000000;
-    top: 40%;
-    left: 30%;
+    left: 42%;
     white-space: nowrap;
-    vertical-align: center;
+    top: 57px;
+    right: 29px;
     position: absolute;
     text-align: center;
-    font-size: 1.4em;
-    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1em;
+
     display: none;
 }
+
+.sentEmail{
+  font-family: 'Open Sans Condensed', sans-serif;
+  color: #f1c40f !important;
+  display: inline-block;
+}
 .slogan {
-    top: 55px;
+    top: 52px;
     display: inline-table;
     color: white;
     text-align: right;
-    left: 155px;
+    left: 164px;
     font-size: 1.2em;
     font-family: 'Open Sans Condensed', sans-serif;
     position: fixed;
@@ -227,27 +232,27 @@ input[type=submit] {
 .directions1{
     z-index: 10000000;
     white-space: nowrap;
-    top: 55px;
-    color: white;
+    top: 13px;
+    color: #d8d8d8;
     text-align: left;
-    font-size: 1.2em;
+    font-size: 0.9em;
     font-family: 'Open Sans Condensed', sans-serif;
     position: absolute;
     float: right;
-    left: 1100px;
+    left: 775px;
     clear: right;
     display: none;
 }
 .directions2{
     z-index: 10000000;
     white-space: nowrap;
-    top: 33px;
-    color: white;
-    text-align: left;
-    font-size: 1.2em;
+    top: 12px;
+    color: #d8d8d8;
+    text-align: center;
+    font-size: 0.9em;
     font-family: 'Open Sans Condensed', sans-serif;
     position: absolute;
     float: right;
-    left: 1100px;
+    left: 576px;
     display: none;
 }

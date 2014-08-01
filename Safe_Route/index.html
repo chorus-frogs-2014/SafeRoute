@@ -32,6 +32,9 @@
                 </h1>
                 <h4 class="slogan">arrive safely</h4>
             </div>
+              <div id = 'emailDiv'>
+        <h4 class="sentEmail">your directions have been sent successfuly!</h4>
+    </div>
         </div>
         <div class="content-middle">
         </div>
@@ -44,24 +47,22 @@
     <div id="loading">
         <p>please wait while we gather the latest crime data.</p>
     </div>
-    <div id = 'emailDiv'>
-        <h3 class="sentEmail">Your directions have been sent to you!</h3>
-    </div>
+
     <div id="forms">
         <form id="locations">
             <input style="width: 16em;" type="text" name="start" />
-            <input style="width: 16em;" type="text" name="end" placeholder = "Enter Destination" />
+            <input style="width: 16em;" type="text" name="end" />
             <input type="submit" value="GO!" />
         </form>
         <form id="contact">
-            <input style="width: 16em;" type="text" name="email" placeholder="Email Me Directions!" />
+            <input style="width: 16em;" type="text" name="email" />
             <br>
             <input type="submit" value="SEND!" />
 
         </form>
     </div>
-    <h4 class="directions1">enter a destination, and then hit 'Go!'</h4>
-    <h4 class="directions2">select a route from the panel below,<br>enter your e-mail, and then press 'submit!'</h4>
+    <h6 class="directions1">enter a destination and hit go!</h6>
+    <h4 class="directions2">select a route from the panel at right and<br>send yourself the directions using the email form below</h4>
     <div class="content-container">
         <div id="directionsPanel"></div>
         <span id="legend"></span>
