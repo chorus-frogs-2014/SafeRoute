@@ -115,6 +115,7 @@ h3 {
     height: 77%;
 }
 #directionsPanel {
+    padding: 3px;
     top: 16%;
     right: 0;
     width: 20%;
@@ -123,20 +124,23 @@ h3 {
     z-index: 10;
     background-color: white;
     display: none;
-    opacity: .9;
+    border: 2px solid black;
     overflow-y: scroll;
 }
 .adp-listsel {
-    background: none;
+    background-color: black;
 }
 .adp-fullwidth tbody tr:nth-child(2) {
+    background-color: black;
     color: green;
 }
 .adp-fullwidth tbody tr:nth-child(3) {
-    color: yellow;
+    color: red;
+    background-color: black;
 }
 .adp-fullwidth tbody tr:nth-child(4) {
-    color: red;
+    color: orange;
+    background-color: black;
 }
 #locations, #contact {
     z-index: 10000;
@@ -153,7 +157,7 @@ h3 {
 }
 a {
     text-decoration: none;
-   color: #23af5b!important;
+    color: #23af5b!important;
 }
 #forms input {} #contact {
     line-height: 1;
