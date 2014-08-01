@@ -13,6 +13,9 @@ SafeRoute.MapsView = {
         var mapsData = [start, end];
         event.preventDefault();
         $('#locations').hide();
+        $('.directions1').fadeOut(1000, function(){
+        $('.directions2').fadeIn(1000);
+        });
         $('#contact').addClass('inlineContact');
         $('#directionsPanel').show();
         $(this).trigger('collectCoords', [mapsData]).bind(this);
