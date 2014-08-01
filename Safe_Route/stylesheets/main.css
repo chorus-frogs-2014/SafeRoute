@@ -15,25 +15,24 @@ html, body {
 }
 #emailDiv {
     z-index: 1000000;
-    top: 97px !important;
-    left: 490px !important;
+    top: 50px !important;
+    right: 245px !important;
     white-space: nowrap;
     position: absolute;
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.2em;
     display: none;
 }
 .sentEmail {
-    font-family: 'sans-serif';
-    font-weight: bold;
-    color: #f1c40f !important;
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: #23af5b !important;
 }
 .slogan {
     top: 52px;
     display: inline-table;
     color: white;
     text-align: right;
-    left: 164px;
+    left: 158px;
     font-size: 1.2em;
     font-family: 'Open Sans Condensed', sans-serif;
     position: fixed;
