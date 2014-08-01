@@ -224,3 +224,30 @@ input[type=submit] {
 .adp-fullwidth tbody tr td {
     padding: 5px;
 }
+.directions1{
+    z-index: 10000000;
+    white-space: nowrap;
+    top: 55px;
+    color: white;
+    text-align: left;
+    font-size: 1.2em;
+    font-family: 'Open Sans Condensed', sans-serif;
+    position: absolute;
+    float: right;
+    left: 1100px;
+    clear: right;
+    display: none;
+}
+.directions2{
+    z-index: 10000000;
+    white-space: nowrap;
+    top: 33px;
+    color: white;
+    text-align: left;
+    font-size: 1.2em;
+    font-family: 'Open Sans Condensed', sans-serif;
+    position: absolute;
+    float: right;
+    left: 1100px;
+    display: none;
+}

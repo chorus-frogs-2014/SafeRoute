@@ -7,12 +7,11 @@ SafeRoute.CrimesModel = {
             dataType: 'jsonp'
         }).done(function(data) {
             $('#loading').addClass('animated zoomOut');
-            $( "#loading" ).fadeOut( 400, function(){
-
-              $('#locations').addClass('flex')
+            $('.directions1').fadeIn(800);
+            $( "#loading" ).fadeOut(400, function(){
+                $('#locations').addClass('flex')
             })
             $('#loadingImage').fadeOut(400);
-
             $(this).trigger('collectCrimes', [data])
         }.bind(this))
     }
