@@ -20,7 +20,7 @@ SafeRoute.RoutesView = {
     directionsDisplay.setMap(this.createMap(this.sanFranGoogleObj));
     directionsDisplay.setDirections(result);
     directionsDisplay.setPanel(document.getElementById("directionsPanel"));
-    var gradient = [
+ var gradient = [
     'rgba(0,0,0,0)',
     'rgba(0,0,255,1)',
     'rgba(0,255,0,1)',
@@ -29,6 +29,7 @@ SafeRoute.RoutesView = {
     var heatmap = new google.maps.visualization.HeatmapLayer({
       data: heatMapData,
       gradient: gradient,
+      dissipating: true,
       radius: 12,
       opacity: .5,
       maxIntensity: 1
