@@ -15,21 +15,18 @@ html, body {
 }
 #emailDiv {
     z-index: 1000000;
-    left: 42%;
+    top: 97px !important;
+    left: 490px !important;
     white-space: nowrap;
-    top: 57px;
-    right: 29px;
     position: absolute;
     text-align: center;
-    font-size: 1em;
-
+    font-size: 1.3em;
     display: none;
 }
-
-.sentEmail{
-  font-family: 'Open Sans Condensed', sans-serif;
-  color: #f1c40f !important;
-  display: inline-block;
+.sentEmail {
+    font-family: 'sans-serif';
+    font-weight: bold;
+    color: #f1c40f !important;
 }
 .slogan {
     top: 52px;
@@ -223,13 +220,13 @@ input[type=submit] {
     padding: 6px;
     font-size: 0.9em;
 }
-.adp-fullwidth tbody tr{
+.adp-fullwidth tbody tr {
     border: white 1px solid;
 }
 .adp-fullwidth tbody tr td {
     padding: 5px;
 }
-.directions1{
+.directions1 {
     z-index: 10000000;
     white-space: nowrap;
     top: 13px;
@@ -243,7 +240,7 @@ input[type=submit] {
     clear: right;
     display: none;
 }
-.directions2{
+.directions2 {
     z-index: 10000000;
     white-space: nowrap;
     top: 12px;
