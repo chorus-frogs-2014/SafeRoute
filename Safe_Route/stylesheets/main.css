@@ -13,9 +13,14 @@ html, body {
     overflow: auto;
     z-index: 0;
 }
-.sentEmail {
-    width: 500px;
+#emailDiv {
     color: gray;
+    z-index: 1000000;
+    top: 40%;
+    left: 30%;
+    white-space: nowrap;
+    vertical-align: center;
+    position: absolute;
     text-align: center;
     font-size: 1.4em;
     font-family: 'Open Sans Condensed', sans-serif;

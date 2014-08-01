@@ -17,6 +17,9 @@ SafeRoute.RoutesView = {
     return mapOptions
   },
   render:function(heatMapData, result, directionsDisplay){
+    result.routes[0].summary = 'Safest: ' + result.routes[0].summary
+    result.routes[1].summary = 'Most Dangerous: ' + result.routes[1].summary
+    result.routes[2].summary = 'Shortest: ' + result.routes[2].summary
     directionsDisplay.setMap(this.createMap(this.sanFranGoogleObj));
     directionsDisplay.setDirections(result);
     directionsDisplay.setPanel(document.getElementById("directionsPanel"));
