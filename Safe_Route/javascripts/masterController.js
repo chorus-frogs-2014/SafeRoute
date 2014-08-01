@@ -37,7 +37,6 @@ SafeRoute.MasterController = {
             this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData)
         }.bind(this));
         $(this.CrimesModel).on('collectCrimes', function(e, crimesData) {
-            console.log(crimesData)
             this.crimesData = crimesData;
         }.bind(this));
     }
