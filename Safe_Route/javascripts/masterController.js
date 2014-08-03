@@ -33,7 +33,6 @@ SafeRoute.MasterController = {
     },
     subscribe: function() {
         $(this.MapsView).on('collectCoords', function(e, mapsData) {
-            console.log(mapsData);
             this.RoutesController.collectMapAndCrimeData(mapsData, this.crimesData)
         }.bind(this));
         $(this.CrimesModel).on('collectCrimes', function(e, crimesData) {
