@@ -1,5 +1,7 @@
-<h1><strong>Safe Route</strong></h1>
-<hr>
+<h1><a href = 'http://austinbourdier.github.io/saferoute/'>SafeRoute</a></h1>
+
+<h2>
+<br>
 <h5>Safe Route finds you the safest route home</h5>
 <br>
 <p>Authored by:
@@ -8,11 +10,4 @@
   <a href = "https://github.com/stackdaddy">Ryan Stack</a>, and
   <a href = "https://github.com/scottjason">Scott Jason</a>
 </p>
-<h3>Overview</h3>
-<h3>Process</h3>
-<h3>Code Design</h3>
-<h3>Algorithm</h3>
 
-<h3>APIs</h3>
-<h4>Google Maps</h4>
-<h4>SF CrimeSpotters</h4>
