@@ -18,7 +18,7 @@ SafeRoute.MapsView = {
         });
         $('#contact').addClass('inlineContact');
         $('#directionsPanel').show();
-        $(this).trigger('collectCoords', [mapsData]).bind(this);
+        $(this).trigger('collectCoords', [mapsData]);
     },
     collect: function(sanFranGoogleObj) {
         return new google.maps.Map(document.getElementById("map-canvas"), this.set(sanFranGoogleObj));

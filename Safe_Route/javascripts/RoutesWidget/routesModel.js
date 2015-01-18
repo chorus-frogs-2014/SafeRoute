@@ -27,40 +27,37 @@ SafeRoute.RoutesModel = {
             for (var d = 0; d < data.features.length; d++) {
                 SafeRoute.RoutesModel.crimesSpots.push([data.features[d].geometry.coordinates])
             }
-
             for (var newRoute = 0; newRoute < result.routes.length; newRoute++) {
-
                 SafeRoute.RoutesModel.allRoutes.push(SafeRoute.RoutesModel.officialPathEvaluator(result.routes[newRoute]))
             }
-
-
-
             var waypointsArr = SafeRoute.RoutesModel.algorithm(result);
             SafeRoute.RoutesModel.callr(waypointsArr, controller, start, end, data)
         })
     },
 
     officialPathEvaluator: function(routeObject) {
-        var routeCoords = []
+        var routeCoords = [];
         for (var j = 0; j < routeObject.overview_path.length; j++) {
-            routeCoords.push([routeObject.overview_path[j].k, routeObject.overview_path[j].B])
+            routeCoords.push([routeObject.overview_path[j].k, routeObject.overview_path[j].D])
         }
         var absoluteCrimeScore = 0
         for (var pathCoord = 0; pathCoord < routeCoords.length; pathCoord++) {
+            console.log(routeCoords[pathCoord])
             for (var crime = 0; crime < SafeRoute.RoutesModel.crimesSpots.length; crime++) {
                 if (Math.abs(routeCoords[pathCoord][0] - SafeRoute.RoutesModel.crimesSpots[crime][0][1]) < .0005 && Math.abs(routeCoords[pathCoord][1] - SafeRoute.RoutesModel.crimesSpots[crime][0][0]) < .0005) {
-                    absoluteCrimeScore += 1
+                    absoluteCrimeScore ++;
                 }
             }
         }
         var scaledCrime = absoluteCrimeScore / routeCoords.length
+        console.log(absoluteCrimeScore)
         routeObject.score = scaledCrime
         return routeObject
     },
     checkRoutes: function(data) {
         var finalRouteObjectArray = []
         var safestScore = 0
-        var safestRouteObject = []
+        var safestRouteObject;
         for (var i = 0; i < data.length; i++) {
             if (i == 0) {
                 safestScore = data[i].score
@@ -73,7 +70,7 @@ SafeRoute.RoutesModel = {
         }
         finalRouteObjectArray.push(safestRouteObject)
         var highestScore = 0
-        var dangerousRouteObject
+        var dangerousRouteObject;
         for (var i = 0; i < data.length; i++) {
             if (i == 0) {
                 highestScore = data[i].score
@@ -86,8 +83,9 @@ SafeRoute.RoutesModel = {
         }
         finalRouteObjectArray.push(dangerousRouteObject)
         var shortestDistance = 0
-        var shortestRouteObject
+        var shortestRouteObject;
         for (var i = 0; i < data.length; i++) {
+
             if (i == 0) {
                 shortestDistance = data[i].legs[0].distance.value
                 shortestRouteObject = data[i]
@@ -123,11 +121,8 @@ SafeRoute.RoutesModel = {
                 var waypointRouteObjectOfficial = result.routes[0]
                 var waypointRouteObjectOfficialScored = SafeRoute.RoutesModel.officialPathEvaluator(waypointRouteObjectOfficial)
                 SafeRoute.RoutesModel.allRoutes.push(waypointRouteObjectOfficialScored);
-
-
                 SafeRoute.RoutesModel.globalCounter++
                 $(document).trigger('testChange', [SafeRoute.RoutesModel.allRoutes])
-
             }
         })
     },
@@ -136,11 +131,12 @@ SafeRoute.RoutesModel = {
         var bearings = [.75, .666, .583]
         var waypoints = [];
         var lat1 = result.routes[0].legs[0].start_location.k
-        var lon1 = result.routes[0].legs[0].start_location.B
+        var lon1 = result.routes[0].legs[0].start_location.D
         var lat2 = result.routes[0].legs[0].end_location.k
-        var lon2 = result.routes[0].legs[0].end_location.B
+        var lon2 = result.routes[0].legs[0].end_location.D
         var latte1 = toRad(lat1)
         var latte2 = toRad(lat2)
+        console.log(lon1)
         var longe1 = toRad(lon1)
         var longe2 = toRad(lon2)
         var changelatte = toRad(lat2 - lat1)
@@ -192,7 +188,7 @@ SafeRoute.RoutesModel = {
                     var total = brng - tangentd
                     var overflow = Math.abs(180 + total)
                     var brngminus = 180 - overflow
-                    var brngplus = brngplus + tangentd
+                    var brngplus = brng + tangentd
                     return [brngplus, brngminus]
                 } else {
                     var brngplus = brng + tangentd
@@ -201,7 +197,6 @@ SafeRoute.RoutesModel = {
                 }
             }
             var waypointBearings = waypointbearingfinder(brng, tangentd);
-
             function Waypoints(d, brng, latte1, longe1) {
                 var waypointArray = []
                 for (var i = 0; i < brng.length; i++) {
@@ -215,6 +210,7 @@ SafeRoute.RoutesModel = {
             waypoint = Waypoints(legdistance, bearingarray, latte1, longe1)
             waypoints.push(waypoint[0], waypoint[1])
         }
+        console.log(waypoints)
         return waypoints
     }
 }

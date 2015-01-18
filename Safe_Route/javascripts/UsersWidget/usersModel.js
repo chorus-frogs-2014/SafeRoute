@@ -3,7 +3,7 @@ SafeRoute.UsersModel = {
         this.controller = controller
         var self = this
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(self.success, this.controller.notify)
+            navigator.geolocation.getCurrentPosition(this.success, this.controller.notify)
         } else {
             this.controller.notify();
         }
